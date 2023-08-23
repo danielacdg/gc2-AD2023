@@ -71,6 +71,11 @@ bool CDemoTriangleGreen::LoadContent()
     pVSBuffer = NULL;
 
     // Compilamos el pixel shader
+    // Compilamos el pixel shader
+    // Compilamos el pixel shader
+    // Compilamos el pixel shader
+    // Compilamos el pixel shader
+    // Compilamos el pixel shader
     ID3DBlob* pPSBuffer = NULL;
     res = CompileShader(L"Recursos/PixelShader.hlsl", "PS_Main", "ps_4_0", &pPSBuffer);
     if (res == false) {
