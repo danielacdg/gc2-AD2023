@@ -1,15 +1,17 @@
 //PixelShader.hlsl
-//
-//
-//
-
 //Constantes Globales para la Textura
+Texture2D colorMap : register(t0);
+SamplerState colorSampler : register(s0);
 
 //Estructura de Entrada para el Shader
+struct PS_Input {
+    float4 pos : SV_POSITION;
+    float2 uv  : TEXCOORD;
+};
 
-float4 PS_Main(float4 pos : SV_POSITION) : SV_TARGET
+float4 PS_Main(PS_Input frag) : SV_TARGET
 {
-    //Pintar el pixel con la textura
-    
-    return float4(0.0f, 0.0f, 0.5f, 1.0f);
+    float4 colorFinal = colorMap.Sample(colorSampler, frag.uv);
+
+    return colorFinal;
 }

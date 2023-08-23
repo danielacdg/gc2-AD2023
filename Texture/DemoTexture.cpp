@@ -10,6 +10,7 @@ struct Vertex
 {
     XMFLOAT3 pos;
     // TextCoord
+    XMFLOAT2 uv;
 };
 
 
@@ -23,6 +24,8 @@ CDemoTexture::CDemoTexture()
     m_pInputLayout = NULL;
     m_pVertexBuffer = NULL;
     //Terxture and Sampler
+    m_ColorMap = NULL;
+    m_pSampler = NULL;
 }
 
 CDemoTexture::~CDemoTexture()
@@ -58,8 +61,9 @@ bool CDemoTexture::LoadContent()
     // Definir diseño de entrada
     D3D11_INPUT_ELEMENT_DESC shaderInputLayout[] =
     {
-        { "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 }
+        { "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
         //TextCoord
+        { "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT, 0, 12, D3D11_INPUT_PER_VERTEX_DATA, 0}
     };
     UINT numLayoutElements = ARRAYSIZE(shaderInputLayout);
 
@@ -99,16 +103,16 @@ bool CDemoTexture::LoadContent()
     pPSBuffer = NULL;
 
 
-    // Definir triángulo
+    // Definir CUADRADO
     Vertex vertices[] =
     {
-        { XMFLOAT3(  0.4f,  0.5f, 0.0f ) /*TextCoord*/ },
-        { XMFLOAT3(  0.4f, -0.5f, 0.0f ) /*TextCoord*/ },
-        { XMFLOAT3( -0.4f, -0.5f, 0.0f ) /*TextCoord*/ },
+        { XMFLOAT3(  0.4f,  0.5f, 0.0f ), XMFLOAT2(1.0f, 0.0f) },
+        { XMFLOAT3(  0.4f, -0.5f, 0.0f ), XMFLOAT2(1.0f, 1.0f) },
+        { XMFLOAT3( -0.4f, -0.5f, 0.0f ), XMFLOAT2(0.0f, 1.0f)},
 
-        { XMFLOAT3( -0.4f, -0.5f, 0.0f ) /*TextCoord*/ },
-        { XMFLOAT3( -0.4f,  0.5f, 0.0f ) /*TextCoord*/ },
-        { XMFLOAT3(  0.4f,  0.5f, 0.0f ) /*TextCoord*/ },
+        { XMFLOAT3( -0.4f, -0.5f, 0.0f ), XMFLOAT2(0.0f, 1.0f) },
+        { XMFLOAT3( -0.4f,  0.5f, 0.0f ), XMFLOAT2(0.0f, 0.0f) },
+        { XMFLOAT3(  0.4f,  0.5f, 0.0f ), XMFLOAT2(1.0f, 0.0f) },
     };
 
     // Descripción del vértice
@@ -130,16 +134,33 @@ bool CDemoTexture::LoadContent()
     }
 
     // Cargamos la textura
+    hr = ::D3DX11CreateShaderResourceViewFromFile(m_pD3DDevice, L"Recursos/texture.jpg", 0, 0, &m_ColorMap, 0);
+    if (FAILED(hr)) {
+        ::MessageBox(m_hWnd, L"Error al cargar la textura", L"Error", MB_OK);
+        return false;
+    }
 
     // Texture sampler
+    D3D11_SAMPLER_DESC samplerDesc;
+    ::ZeroMemory(&samplerDesc, sizeof(samplerDesc));
+    samplerDesc.AddressU = D3D11_TEXTURE_ADDRESS_WRAP;
+    samplerDesc.AddressV = D3D11_TEXTURE_ADDRESS_WRAP;
+    samplerDesc.AddressW = D3D11_TEXTURE_ADDRESS_WRAP;
+    samplerDesc.ComparisonFunc = D3D11_COMPARISON_NEVER;
+    samplerDesc.Filter = D3D11_FILTER_MIN_MAG_MIP_LINEAR;
+    samplerDesc.MaxLOD = D3D11_FLOAT32_MAX;
 
+    hr = m_pD3DDevice->CreateSamplerState(&samplerDesc, &m_pSampler);
+    if (FAILED(hr)) {
+        ::MessageBox(m_hWnd, L"Error al crear el sampler state", L"Error", MB_OK);
+        return false;
+    }
     return true;
 }
 
 void CDemoTexture::UnloadContent()
 {
     // Cleanup
-    //Terxture and Sampler
     if (m_pVS)
         m_pVS->Release();
     m_pVS = NULL;
@@ -152,6 +173,14 @@ void CDemoTexture::UnloadContent()
     if (m_pVertexBuffer)
         m_pVertexBuffer->Release();
     m_pVertexBuffer = NULL;
+    //Terxture and Sampler
+    if (m_ColorMap)
+        m_ColorMap->Release();
+    m_ColorMap = NULL;
+
+    if (m_pSampler)
+        m_pSampler->Release();
+    m_pSampler = NULL;
 }
 
 void CDemoTexture::Update()
@@ -183,7 +212,8 @@ void CDemoTexture::Render()
     m_pD3DContext->PSSetShader(m_pPS, 0, 0);
 
     //Set Texture
-    
+    m_pD3DContext->PSSetShaderResources(0, 1, &m_ColorMap);
+    m_pD3DContext->PSSetSamplers(0, 1, &m_pSampler);
 
     // Draw triangles
     m_pD3DContext->Draw(6, 0);
