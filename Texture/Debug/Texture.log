@@ -1,5 +1,4 @@
-﻿  compilation object save succeeded; see C:\Users\Usuario\Documents\Graficas2-AD2023\gc2-AD2023\Texture\Debug\PixelShader.cso
-  compilation object save succeeded; see C:\Users\Usuario\Documents\Graficas2-AD2023\gc2-AD2023\Texture\Debug\VertexShader.cso
+﻿  compilation object save succeeded; see E:\source\repos\PracticasGraficas2\gc2-AD2023\Texture\Debug\PixelShader.cso
   DemoTexture.cpp
 C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dxgitype.h(12,1): warning C4005: 'DXGI_STATUS_OCCLUDED': redefinición de macro
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\winerror.h(56388): message : vea la definición anterior de 'DXGI_STATUS_OCCLUDED'
@@ -239,4 +238,4 @@ C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\xnamathmisc.inl
 C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\xnamathmisc.inl(519,40): warning C4838: la conversión de 'unsigned int' en 'INT' requiere una conversión de restricción
 C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\xnamathmisc.inl(519,51): warning C4838: la conversión de 'unsigned int' en 'INT' requiere una conversión de restricción
   Generando código...
-  Texture.vcxproj -> C:\Users\Usuario\Documents\Graficas2-AD2023\gc2-AD2023\Texture\Debug\Texture.exe
+  Texture.vcxproj -> E:\source\repos\PracticasGraficas2\gc2-AD2023\Texture\Debug\Texture.exe

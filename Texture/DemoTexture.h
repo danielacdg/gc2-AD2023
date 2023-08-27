@@ -32,6 +32,7 @@ protected:
     ID3D11Buffer* m_pVertexBuffer;
     //Terxture and Sampler
     ID3D11ShaderResourceView* m_ColorMap;
+    ID3D11ShaderResourceView* m_ColorMap2;
     ID3D11SamplerState* m_pSampler;
 };
 

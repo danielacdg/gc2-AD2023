@@ -25,6 +25,7 @@ CDemoTexture::CDemoTexture()
     m_pVertexBuffer = NULL;
     //Terxture and Sampler
     m_ColorMap = NULL;
+    m_ColorMap2 = NULL;
     m_pSampler = NULL;
 }
 
@@ -133,8 +134,15 @@ bool CDemoTexture::LoadContent()
         return false;
     }
 
-    // Cargamos la textura
-    hr = ::D3DX11CreateShaderResourceViewFromFile(m_pD3DDevice, L"Recursos/texture.jpg", 0, 0, &m_ColorMap, 0);
+    // Cargamos la primera textura
+    hr = ::D3DX11CreateShaderResourceViewFromFile(m_pD3DDevice, L"Recursos/water_tx.jpg", 0, 0, &m_ColorMap, 0);
+    if (FAILED(hr)) {
+        ::MessageBox(m_hWnd, L"Error al cargar la textura", L"Error", MB_OK);
+        return false;
+    }
+
+    //Cargamos la segunda textura
+    hr = ::D3DX11CreateShaderResourceViewFromFile(m_pD3DDevice, L"Recursos/texture.jpg", 0, 0, &m_ColorMap2, 0);
     if (FAILED(hr)) {
         ::MessageBox(m_hWnd, L"Error al cargar la textura", L"Error", MB_OK);
         return false;
@@ -178,6 +186,10 @@ void CDemoTexture::UnloadContent()
         m_ColorMap->Release();
     m_ColorMap = NULL;
 
+    if (m_ColorMap2)
+        m_ColorMap2->Release();
+    m_ColorMap2 = NULL;
+
     if (m_pSampler)
         m_pSampler->Release();
     m_pSampler = NULL;
@@ -213,6 +225,7 @@ void CDemoTexture::Render()
 
     //Set Texture
     m_pD3DContext->PSSetShaderResources(0, 1, &m_ColorMap);
+    m_pD3DContext->PSSetShaderResources(1, 1, &m_ColorMap2);
     m_pD3DContext->PSSetSamplers(0, 1, &m_pSampler);
 
     // Draw triangles
