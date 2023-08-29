@@ -6,12 +6,12 @@
 //Estructura de Entrada y de Salida para el Shader
 struct VS_Input {
     float4 pos : POSITION;
-    float2 uv  : TEXCOORD;
+    float2 uv : TEXCOORD;
 };
 
 struct PS_Output {
     float4 pos : SV_POSITION;
-    float2 uv  : TEXCOORD;
+    float2 uv : TEXCOORD;
 };
 
 PS_Output VS_Main(VS_Input vertices)
