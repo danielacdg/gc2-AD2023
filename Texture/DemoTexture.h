@@ -30,9 +30,13 @@ protected:
     ID3D11PixelShader* m_pPS;
     ID3D11InputLayout* m_pInputLayout;
     ID3D11Buffer* m_pVertexBuffer;
+
     //Terxture and Sampler
     ID3D11ShaderResourceView* m_ColorMap;
     ID3D11SamplerState* m_pSampler;
+
+    ID3D11ShaderResourceView* m_ColorMap2;
+    ID3D11SamplerState* m_pSampler2;
 };
 
 

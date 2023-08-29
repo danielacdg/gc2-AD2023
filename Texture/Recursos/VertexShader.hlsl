@@ -16,7 +16,7 @@ struct PS_Output {
 
 PS_Output VS_Main(VS_Input vertices)
 {
-    PS_Output psOut = (PS_Output)0;
+    PS_Output psOut = (PS_Output) 0;
 
     psOut.pos = vertices.pos;
     psOut.uv = vertices.uv;

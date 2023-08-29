@@ -11,6 +11,7 @@ struct Vertex
     XMFLOAT3 pos;
     // TextCoord
     XMFLOAT2 uv;
+    XMFLOAT2 uv2;
 };
 
 
@@ -23,9 +24,13 @@ CDemoTexture::CDemoTexture()
     m_pPS = NULL;
     m_pInputLayout = NULL;
     m_pVertexBuffer = NULL;
+
     //Terxture and Sampler
     m_ColorMap = NULL;
     m_pSampler = NULL;
+
+    m_ColorMap2 = NULL;
+    m_pSampler2 = NULL;
 }
 
 CDemoTexture::~CDemoTexture()
@@ -46,6 +51,8 @@ bool CDemoTexture::LoadContent()
         return false;
     }
 
+
+
     // Creamos el vertex shader
     HRESULT hr;
     hr = m_pD3DDevice->CreateVertexShader(
@@ -58,6 +65,19 @@ bool CDemoTexture::LoadContent()
         return false;
     }
 
+    HRESULT hr2;
+    hr2 = m_pD3DDevice->CreateVertexShader(
+        pVSBuffer->GetBufferPointer(),
+        pVSBuffer->GetBufferSize(),
+        0, &m_pVS);
+    if (FAILED(hr2)) {
+        if (pVSBuffer)
+            pVSBuffer->Release();
+        return false;
+    }
+
+
+
     // Definir diseño de entrada
     D3D11_INPUT_ELEMENT_DESC shaderInputLayout[] =
     {
@@ -65,6 +85,8 @@ bool CDemoTexture::LoadContent()
         //TextCoord
         { "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT, 0, 12, D3D11_INPUT_PER_VERTEX_DATA, 0}
     };
+
+
     UINT numLayoutElements = ARRAYSIZE(shaderInputLayout);
 
     // Crear diseño de entrada
@@ -76,6 +98,17 @@ bool CDemoTexture::LoadContent()
     if (FAILED(hr)) {
         return false;
     }
+
+    hr2 = m_pD3DDevice->CreateInputLayout(
+        shaderInputLayout, numLayoutElements,
+        pVSBuffer->GetBufferPointer(),
+        pVSBuffer->GetBufferSize(),
+        &m_pInputLayout);
+    if (FAILED(hr2)) {
+        return false;
+    }
+
+
 
     // Release VS buffer
     pVSBuffer->Release();
@@ -89,6 +122,8 @@ bool CDemoTexture::LoadContent()
         return false;
     }
 
+
+
     // Creamos el pixel shader
     hr = m_pD3DDevice->CreatePixelShader(
         pPSBuffer->GetBufferPointer(),
@@ -97,6 +132,16 @@ bool CDemoTexture::LoadContent()
     if (FAILED(hr)) {
         return false;
     }
+
+    hr2 = m_pD3DDevice->CreatePixelShader(
+        pPSBuffer->GetBufferPointer(),
+        pPSBuffer->GetBufferSize(),
+        0, &m_pPS);
+    if (FAILED(hr2)) {
+        return false;
+    }
+
+
 
     // Cleanup PS buffer
     pPSBuffer->Release();
@@ -127,11 +172,20 @@ bool CDemoTexture::LoadContent()
     ZeroMemory(&resourceData, sizeof(resourceData));
     resourceData.pSysMem = vertices;
 
+
+
     // Creamos el vertex Buffer
     hr = m_pD3DDevice->CreateBuffer(&vertexDesc, &resourceData, &m_pVertexBuffer);
     if (FAILED(hr)) {
         return false;
     }
+
+    hr2 = m_pD3DDevice->CreateBuffer(&vertexDesc, &resourceData, &m_pVertexBuffer);
+    if (FAILED(hr2)) {
+        return false;
+    }
+
+
 
     // Cargamos la textura
     hr = ::D3DX11CreateShaderResourceViewFromFile(m_pD3DDevice, L"Recursos/texture.jpg", 0, 0, &m_ColorMap, 0);
@@ -139,6 +193,14 @@ bool CDemoTexture::LoadContent()
         ::MessageBox(m_hWnd, L"Error al cargar la textura", L"Error", MB_OK);
         return false;
     }
+
+    hr2 = ::D3DX11CreateShaderResourceViewFromFile(m_pD3DDevice, L"Recursos/water_tx.jpg", 0, 0, &m_ColorMap2, 0);
+    if (FAILED(hr2)) {
+        ::MessageBox(m_hWnd, L"No se pudo cargar la textura", L"Error", MB_OK);
+        return false;
+    }
+
+
 
     // Texture sampler
     D3D11_SAMPLER_DESC samplerDesc;
@@ -150,11 +212,22 @@ bool CDemoTexture::LoadContent()
     samplerDesc.Filter = D3D11_FILTER_MIN_MAG_MIP_LINEAR;
     samplerDesc.MaxLOD = D3D11_FLOAT32_MAX;
 
+
+
     hr = m_pD3DDevice->CreateSamplerState(&samplerDesc, &m_pSampler);
     if (FAILED(hr)) {
         ::MessageBox(m_hWnd, L"Error al crear el sampler state", L"Error", MB_OK);
         return false;
     }
+
+    hr2 = m_pD3DDevice->CreateSamplerState(&samplerDesc, &m_pSampler2);
+    if (FAILED(hr2)) {
+        ::MessageBox(m_hWnd, L"No se pudo cargar el sampler", L"ERROR", MB_OK);
+        return false;
+    }
+
+
+
     return true;
 }
 
@@ -173,7 +246,9 @@ void CDemoTexture::UnloadContent()
     if (m_pVertexBuffer)
         m_pVertexBuffer->Release();
     m_pVertexBuffer = NULL;
-    //Terxture and Sampler
+
+
+    //Terxture and Sampler 1
     if (m_ColorMap)
         m_ColorMap->Release();
     m_ColorMap = NULL;
@@ -181,6 +256,15 @@ void CDemoTexture::UnloadContent()
     if (m_pSampler)
         m_pSampler->Release();
     m_pSampler = NULL;
+
+
+    //Terxture and Sampler 2
+    if (m_ColorMap2)
+        m_ColorMap2->Release();
+    m_ColorMap2 = NULL;
+    if (m_pSampler2)
+        m_pSampler2->Release();
+    m_pSampler2 = NULL;
 }
 
 void CDemoTexture::Update()
@@ -214,6 +298,9 @@ void CDemoTexture::Render()
     //Set Texture
     m_pD3DContext->PSSetShaderResources(0, 1, &m_ColorMap);
     m_pD3DContext->PSSetSamplers(0, 1, &m_pSampler);
+
+    m_pD3DContext->PSSetShaderResources(1, 1, &m_ColorMap2);
+    m_pD3DContext->PSSetSamplers(1, 1, &m_pSampler2);
 
     // Draw triangles
     m_pD3DContext->Draw(6, 0);

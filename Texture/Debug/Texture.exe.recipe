@@ -2,15 +2,15 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\Users\Usuario\Documents\Graficas2-AD2023\gc2-AD2023\Texture\Debug\Texture.exe</FullPath>
+      <FullPath>A:\GitHub\Graficas2\gc2-AD2023\Texture\Debug\Texture.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles>
     <ContentFile>
-      <FullPath>C:\Users\Usuario\Documents\Graficas2-AD2023\gc2-AD2023\Texture\Debug\PixelShader.cso</FullPath>
+      <FullPath>A:\GitHub\Graficas2\gc2-AD2023\Texture\Debug\PixelShader.cso</FullPath>
     </ContentFile>
     <ContentFile>
-      <FullPath>C:\Users\Usuario\Documents\Graficas2-AD2023\gc2-AD2023\Texture\Debug\VertexShader.cso</FullPath>
+      <FullPath>A:\GitHub\Graficas2\gc2-AD2023\Texture\Debug\VertexShader.cso</FullPath>
     </ContentFile>
   </ContentFiles>
   <SatelliteDlls />
