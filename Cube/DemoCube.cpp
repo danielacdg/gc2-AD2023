@@ -35,11 +35,11 @@ CDemoCube::CDemoCube()
     m_pIndexBuffer = NULL;
     m_pColorMap = NULL;
     m_pColorMapSampler = NULL;
-    /*
+   
     m_pViewCB = NULL;
     m_pProjCB = NULL;
     m_pWorldCB = NULL;
-    */
+   
 }
 
 CDemoCube::~CDemoCube()
@@ -216,10 +216,41 @@ bool CDemoCube::LoadContent()
     }
 
     // Create constant buffers (see hlsl-file)
+
+    D3D11_BUFFER_DESC constBufferDesc;
+    ::ZeroMemory(&constantByfferDesc, sizeof(constantBufferDesc));
+    constBufferDesc.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
+    constBufferDesc.ByteWidth = sizeof(XMMATRIX);
+    constBufferDesc.Usage = D3D11_USAGE_DEFAULT;
+    hr = m_pD3DDevice->CreateBuffer(&constBufferDesc, 0, &m_pViewCB);
+    if (FAILED(hr)) {
+        ::MessageBox(m_hWnd, L "Error al crear el Buffer View", L"ERROR", MB_OK);
+        return false;
+    }
     
+    hr = m_pD3DDevice->CreateBuffer(&constBufferDesc, 0, &m_pProjCB);
+    if (FAILED(hr)) {
+        ::MessageBox(m_hWnd, L "Error al crear el Buffer View", L"ERROR", MB_OK);
+        return false;
+    }
+
+    hr = m_pD3DDevice->CreateBuffer(&constBufferDesc, 0, &m_pWorldCB);
+    if (FAILED(hr)) {
+        ::MessageBox(m_hWnd, L "Error al crear el Buffer View", L"ERROR", MB_OK);
+        return false;
+    }
+
+
+
 
     // Initialize matrixes
-    
+    m_viewMatrix = XMMatrixIdentity();
+    m_projMatrix = XMMatrixPerspectiveFovLH(XM_PIDIV4, 640.0f / 480.0f, 0.01f, 100.0f);
+
+    XMMATRIX t = XMMatrixTranslation(0.0f, 0.0f, 10.0f);
+    m_viewMatrix = XMMatrixTranspose(m_viewMatrix * t);
+    m_projMatrix = XMMatrixTranspose(m_projMatrix);
+
 
     //Set Transformations
     rotationx = 0.0;
@@ -257,7 +288,7 @@ void CDemoCube::UnloadContent()
         m_pIndexBuffer->Release();
     m_pIndexBuffer = NULL;
 
-    /*
+    
     if (m_pViewCB)
         m_pViewCB->Release();
     m_pViewCB = NULL;
@@ -267,7 +298,7 @@ void CDemoCube::UnloadContent()
     if (m_pWorldCB)
         m_pWorldCB->Release();
     m_pWorldCB = NULL;
-    */
+    
 }
 
 void CDemoCube::Update()
@@ -303,13 +334,21 @@ void CDemoCube::Render()
     m_pD3DContext->PSSetSamplers(0, 1, &m_pColorMapSampler);
 
     // Position cube in the world
-    
+    XMMATRIX r = XMMatrixRotationRollPitchYaw(rotation, 0.0f, rotationz);
+    XMMATRIX t = XMMatrixTranslation(translationx, translationy, 5.0f);
+    XMMATRIX s = XMMatrixScaling(1.0f, 1.0f, 1.0f);
+    XMMATRIX w = XMMatrixTransposer(r * t * s);
+
 
     // Update constant buffers
-    
+    m_pD3DContext->UpdateSubresource(m_pWorldCB, 0, 0, &w, 0, 0);
+    m_pD3DContext->UpdateSubresource(m_pViewCB, 0, 0, &m_viewMatrix, 0, 0);
+    m_pD3DContext->UpdateSubresource(m_pProjCB, 0, 0, &m_projMatrix, 0, 0 );
 
     // Upload constant buffers to GPU
-    
+    m_pD3DContext->VSSetConstantBuffers(0, 1, &m_pWorldCB);
+    m_pD3DContext->VSSetConstantBuffers(0, 1, &m_pViewCB);
+    m_pD3DContext->VSSetConstantBuffers(0, 1, &m_pProjCB);
 
     // Draw triangles
     m_pD3DContext->DrawIndexed(36, 0, 0);
@@ -318,5 +357,5 @@ void CDemoCube::Render()
     m_pSwapChain->Present(0, 0);
 
     //Transformations
-    
+    rotation += .0001;
 }

@@ -3,7 +3,17 @@
 //
 
 //Constantes de matrices
+cbuffer cbChangesEveryFame : register (b0) {
+    matrix worldMatrix;
+}
 
+cbuffer cbNeverChanges : register (b1) {
+    matrix viewMatrix;
+}
+
+cbuffer cbChangeOnResize : register (b2) {
+    matrix projMatrix;
+}
 
 struct VS_Input
 {
@@ -25,8 +35,11 @@ PS_Input VS_Main(VS_Input vertex)
     // Dibujar vertices en base a matrices
     
     
-    vsOut.pos = vertex.pos;
-    vsOut.tex0 = vertex.tex0;
+    vsOut.pos = mul(vertex.pos, worldMatrix);
+    vsOut.pos = mul(vs.pos, viewMatrix);
+    vsOut.pos = mul(vsOut.pos, projMatrix);
+
+    vsOut.text0 = vertex.text0;
 
     return vsOut;
 }
