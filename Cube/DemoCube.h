@@ -34,8 +34,13 @@ protected:
     ID3D11ShaderResourceView* m_pColorMap;
     ID3D11SamplerState* m_pColorMapSampler;
 
-    // Buffers y Matrices de transformacion
-    
+    // Buffers world - projection - view
+    ID3D11Buffer* m_pWorldCB;
+    ID3D11Buffer* m_pProjCB;
+    ID3D11Buffer* m_pViewCB;
+    //Matrices de transformacion
+    XMMATRIX m_viewMatrix;
+    XMMATRIX m_projMatrix;
 };
 
 
