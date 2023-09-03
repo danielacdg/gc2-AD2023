@@ -38,7 +38,6 @@ CDemoCube::CDemoCube()
     m_pViewCB = NULL;
     m_pProjCB = NULL;
     m_pWorldCB = NULL;
-    
 }
 
 CDemoCube::~CDemoCube()
@@ -82,8 +81,8 @@ bool CDemoCube::LoadContent()
     // Create input layout
     hr = m_pD3DDevice->CreateInputLayout(
         shaderInputLayout, numLayoutElements,
-        pVSBuffer->GetBufferPointer(), 
-        pVSBuffer->GetBufferSize(), 
+        pVSBuffer->GetBufferPointer(),
+        pVSBuffer->GetBufferSize(),
         &m_pInputLayout);
     if (FAILED(hr)) {
         return false;
@@ -104,7 +103,7 @@ bool CDemoCube::LoadContent()
     // Create pixel shader
     hr = m_pD3DDevice->CreatePixelShader(
         pPSBuffer->GetBufferPointer(),
-        pPSBuffer->GetBufferSize(), 
+        pPSBuffer->GetBufferSize(),
         0, &m_pPS);
     if (FAILED(hr)) {
         return false;
@@ -117,35 +116,35 @@ bool CDemoCube::LoadContent()
     // Define triangles
     Vertex vertices[] =
     {
-        { XMFLOAT3( -1.0f,  1.0f, -1.0f ), XMFLOAT2( 0.0f, 0.0f ) },
-        { XMFLOAT3(  1.0f,  1.0f, -1.0f ), XMFLOAT2( 1.0f, 0.0f ) },
-        { XMFLOAT3(  1.0f,  1.0f,  1.0f ), XMFLOAT2( 1.0f, 1.0f ) },
-        { XMFLOAT3( -1.0f,  1.0f,  1.0f ), XMFLOAT2( 0.0f, 1.0f ) },
+        { XMFLOAT3(-1.0f,  1.0f, -1.0f), XMFLOAT2(0.0f, 0.0f) },
+        { XMFLOAT3(1.0f,  1.0f, -1.0f), XMFLOAT2(1.0f, 0.0f) },
+        { XMFLOAT3(1.0f,  1.0f,  1.0f), XMFLOAT2(1.0f, 1.0f) },
+        { XMFLOAT3(-1.0f,  1.0f,  1.0f), XMFLOAT2(0.0f, 1.0f) },
 
-        { XMFLOAT3( -1.0f, -1.0f, -1.0f ), XMFLOAT2( 0.0f, 0.0f ) },
-        { XMFLOAT3(  1.0f, -1.0f, -1.0f ), XMFLOAT2( 1.0f, 0.0f ) },
-        { XMFLOAT3(  1.0f, -1.0f,  1.0f ), XMFLOAT2( 1.0f, 1.0f ) },
-        { XMFLOAT3( -1.0f, -1.0f,  1.0f ), XMFLOAT2( 0.0f, 1.0f ) },
+        { XMFLOAT3(-1.0f, -1.0f, -1.0f), XMFLOAT2(0.0f, 0.0f) },
+        { XMFLOAT3(1.0f, -1.0f, -1.0f), XMFLOAT2(1.0f, 0.0f) },
+        { XMFLOAT3(1.0f, -1.0f,  1.0f), XMFLOAT2(1.0f, 1.0f) },
+        { XMFLOAT3(-1.0f, -1.0f,  1.0f), XMFLOAT2(0.0f, 1.0f) },
 
-        { XMFLOAT3( -1.0f, -1.0f,  1.0f ), XMFLOAT2( 0.0f, 0.0f ) },
-        { XMFLOAT3( -1.0f, -1.0f, -1.0f ), XMFLOAT2( 1.0f, 0.0f ) },
-        { XMFLOAT3( -1.0f,  1.0f, -1.0f ), XMFLOAT2( 1.0f, 1.0f ) },
-        { XMFLOAT3( -1.0f,  1.0f,  1.0f ), XMFLOAT2( 0.0f, 1.0f ) },
+        { XMFLOAT3(-1.0f, -1.0f,  1.0f), XMFLOAT2(0.0f, 0.0f) },
+        { XMFLOAT3(-1.0f, -1.0f, -1.0f), XMFLOAT2(1.0f, 0.0f) },
+        { XMFLOAT3(-1.0f,  1.0f, -1.0f), XMFLOAT2(1.0f, 1.0f) },
+        { XMFLOAT3(-1.0f,  1.0f,  1.0f), XMFLOAT2(0.0f, 1.0f) },
 
-        { XMFLOAT3(  1.0f, -1.0f,  1.0f ), XMFLOAT2( 0.0f, 0.0f ) },
-        { XMFLOAT3(  1.0f, -1.0f, -1.0f ), XMFLOAT2( 1.0f, 0.0f ) },
-        { XMFLOAT3(  1.0f,  1.0f, -1.0f ), XMFLOAT2( 1.0f, 1.0f ) },
-        { XMFLOAT3(  1.0f,  1.0f,  1.0f ), XMFLOAT2( 0.0f, 1.0f ) },
+        { XMFLOAT3(1.0f, -1.0f,  1.0f), XMFLOAT2(0.0f, 0.0f) },
+        { XMFLOAT3(1.0f, -1.0f, -1.0f), XMFLOAT2(1.0f, 0.0f) },
+        { XMFLOAT3(1.0f,  1.0f, -1.0f), XMFLOAT2(1.0f, 1.0f) },
+        { XMFLOAT3(1.0f,  1.0f,  1.0f), XMFLOAT2(0.0f, 1.0f) },
 
-        { XMFLOAT3( -1.0f, -1.0f, -1.0f ), XMFLOAT2( 0.0f, 0.0f ) },
-        { XMFLOAT3(  1.0f, -1.0f, -1.0f ), XMFLOAT2( 1.0f, 0.0f ) },
-        { XMFLOAT3(  1.0f,  1.0f, -1.0f ), XMFLOAT2( 1.0f, 1.0f ) },
-        { XMFLOAT3( -1.0f,  1.0f, -1.0f ), XMFLOAT2( 0.0f, 1.0f ) },
+        { XMFLOAT3(-1.0f, -1.0f, -1.0f), XMFLOAT2(0.0f, 0.0f) },
+        { XMFLOAT3(1.0f, -1.0f, -1.0f), XMFLOAT2(1.0f, 0.0f) },
+        { XMFLOAT3(1.0f,  1.0f, -1.0f), XMFLOAT2(1.0f, 1.0f) },
+        { XMFLOAT3(-1.0f,  1.0f, -1.0f), XMFLOAT2(0.0f, 1.0f) },
 
-        { XMFLOAT3( -1.0f, -1.0f,  1.0f ), XMFLOAT2( 0.0f, 0.0f ) },
-        { XMFLOAT3(  1.0f, -1.0f,  1.0f ), XMFLOAT2( 1.0f, 0.0f ) },
-        { XMFLOAT3(  1.0f,  1.0f,  1.0f ), XMFLOAT2( 1.0f, 1.0f ) },
-        { XMFLOAT3( -1.0f,  1.0f,  1.0f ), XMFLOAT2( 0.0f, 1.0f ) },
+        { XMFLOAT3(-1.0f, -1.0f,  1.0f), XMFLOAT2(0.0f, 0.0f) },
+        { XMFLOAT3(1.0f, -1.0f,  1.0f), XMFLOAT2(1.0f, 0.0f) },
+        { XMFLOAT3(1.0f,  1.0f,  1.0f), XMFLOAT2(1.0f, 1.0f) },
+        { XMFLOAT3(-1.0f,  1.0f,  1.0f), XMFLOAT2(0.0f, 1.0f) },
     };
 
     // Vertex description
@@ -182,7 +181,7 @@ bool CDemoCube::LoadContent()
     ::ZeroMemory(&indexBufferDesc, sizeof(indexBufferDesc));
     indexBufferDesc.Usage = D3D11_USAGE_DEFAULT;
     indexBufferDesc.BindFlags = D3D11_BIND_INDEX_BUFFER;
-    indexBufferDesc.ByteWidth = sizeof( WORD ) * 36;
+    indexBufferDesc.ByteWidth = sizeof(WORD) * 36;
     indexBufferDesc.CPUAccessFlags = 0;
     resourceData.pSysMem = indices;
     hr = m_pD3DDevice->CreateBuffer(&indexBufferDesc, &resourceData, &m_pIndexBuffer);
@@ -220,29 +219,26 @@ bool CDemoCube::LoadContent()
     constBufferDesc.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
     constBufferDesc.ByteWidth = sizeof(XMMATRIX);
     constBufferDesc.Usage = D3D11_USAGE_DEFAULT;
-    hr = m_pD3DDevice->CreateBuffer(&constBufferDesc, 0, &m_pViewCB);
 
+    hr = m_pD3DDevice->CreateBuffer(&constBufferDesc, 0, &m_pViewCB);
     if (FAILED(hr)) {
-        ::MessageBox(m_hWnd, L"error al crear buffer view", L"ERROR", MB_OK);
+        ::MessageBox(m_hWnd, L"Error al Crear Buffer View", L"ERROR", MB_OK);
         return false;
     }
-
     hr = m_pD3DDevice->CreateBuffer(&constBufferDesc, 0, &m_pProjCB);
-
     if (FAILED(hr)) {
-        ::MessageBox(m_hWnd, L"error al crear buffer projection", L"ERROR", MB_OK);
+        ::MessageBox(m_hWnd, L"Error al Crear Buffer Projection", L"ERROR", MB_OK);
         return false;
     }
     hr = m_pD3DDevice->CreateBuffer(&constBufferDesc, 0, &m_pWorldCB);
-
     if (FAILED(hr)) {
-        ::MessageBox(m_hWnd, L"error al crear buffer world", L"ERROR", MB_OK);
+        ::MessageBox(m_hWnd, L"Error al Crear Buffer World", L"ERROR", MB_OK);
         return false;
     }
 
     // Initialize matrixes
     m_viewMatrix = XMMatrixIdentity();
-    m_projMatrix = XMMatrixPerspectiveFovLH(XM_PIDIV4,640.0f/480.0f,0.01f,100.0f);
+    m_projMatrix = XMMatrixPerspectiveFovLH(XM_PIDIV4, 640.0f / 480.0f, 0.01f, 100.0f);
     XMMATRIX t = XMMatrixTranslation(0.0f, 0.0f, 10.0f);
     m_viewMatrix = XMMatrixTranspose(m_viewMatrix * t);
     m_projMatrix = XMMatrixTranspose(m_projMatrix);
@@ -292,7 +288,6 @@ void CDemoCube::UnloadContent()
     if (m_pWorldCB)
         m_pWorldCB->Release();
     m_pWorldCB = NULL;
-    
 }
 
 void CDemoCube::Update()
@@ -328,20 +323,20 @@ void CDemoCube::Render()
     m_pD3DContext->PSSetSamplers(0, 1, &m_pColorMapSampler);
 
     // Position cube in the world
-    XMMATRIX r = XMMatrixRotationRollPitchYaw(rotationx,0.0f,rotationz);
-    XMMATRIX t = XMMatrixTranslation(traslationx,traslationy,5.0f);
-    XMMATRIX s = XMMatrixScaling(1.0f,1.0f,1.0f);
+    XMMATRIX r = XMMatrixRotationRollPitchYaw(rotationx, 0.0f, rotationz);
+    XMMATRIX t = XMMatrixTranslation(traslationx, traslationy, 5.0f);
+    XMMATRIX s = XMMatrixScaling(1.0f, 1.0f, 1.0f);
     XMMATRIX w = XMMatrixTranspose(r * t * s);
 
     // Update constant buffers
-    m_pD3DContext->UpdateSubresource(m_pWorldCB,0,0,&w,0,0);
-    m_pD3DContext->UpdateSubresource(m_pViewCB,0,0,&m_viewMatrix,0,0);
-    m_pD3DContext->UpdateSubresource(m_pProjCB,0,0,&m_projMatrix,0,0);
+    m_pD3DContext->UpdateSubresource(m_pWorldCB, 0, 0, &w, 0, 0);
+    m_pD3DContext->UpdateSubresource(m_pViewCB, 0, 0, &m_viewMatrix, 0, 0);
+    m_pD3DContext->UpdateSubresource(m_pProjCB, 0, 0, &m_projMatrix, 0, 0);
 
     // Upload constant buffers to GPU
-    m_pD3DContext->PSSetConstantBuffers(0, 1, &m_pWorldCB);
-    m_pD3DContext->PSSetConstantBuffers(1, 1, &m_pViewCB);
-    m_pD3DContext->PSSetConstantBuffers(2, 1, &m_pProjCB);
+    m_pD3DContext->VSSetConstantBuffers(0, 1, &m_pWorldCB);
+    m_pD3DContext->VSSetConstantBuffers(1, 1, &m_pViewCB);
+    m_pD3DContext->VSSetConstantBuffers(2, 1, &m_pProjCB);
 
     // Draw triangles
     m_pD3DContext->DrawIndexed(36, 0, 0);
@@ -350,5 +345,31 @@ void CDemoCube::Render()
     m_pSwapChain->Present(0, 0);
 
     //Transformations
-    
+    rotationz += .01;
+    rotationx += .01;
+    if (up) {
+        traslationx += .01;
+        if (traslationx >= 6.5) {
+            up = false;
+        }
+    }
+    else {
+        traslationx -= .01;
+        if (traslationx <= -6.5) {
+            up = true;
+        }
+    }
+
+    if (right) {
+        traslationy += .01;
+        if (traslationy >= 4.5) {
+            right = false;
+        }
+    }
+    else {
+        traslationy -= .01;
+        if (traslationy <= -4.5) {
+            right = true;
+        }
+    }
 }

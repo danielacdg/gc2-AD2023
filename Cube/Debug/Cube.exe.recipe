@@ -2,15 +2,15 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\Users\Usuario 21\Documents\1811522\gc2-AD2023\Cube\Debug\Cube.exe</FullPath>
+      <FullPath>C:\Users\Administrator\Desktop\Graficas2\gc2-AD2023\Cube\Debug\Cube.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles>
     <ContentFile>
-      <FullPath>C:\Users\Usuario 21\Documents\1811522\gc2-AD2023\Cube\Debug\PixelShader.cso</FullPath>
+      <FullPath>C:\Users\Administrator\Desktop\Graficas2\gc2-AD2023\Cube\Debug\PixelShader.cso</FullPath>
     </ContentFile>
     <ContentFile>
-      <FullPath>C:\Users\Usuario 21\Documents\1811522\gc2-AD2023\Cube\Debug\VertexShader.cso</FullPath>
+      <FullPath>C:\Users\Administrator\Desktop\Graficas2\gc2-AD2023\Cube\Debug\VertexShader.cso</FullPath>
     </ContentFile>
   </ContentFiles>
   <SatelliteDlls />

@@ -43,6 +43,8 @@ protected:
     XMMATRIX m_viewMatrix;
     XMMATRIX m_projMatrix;
 
+    bool up, right;
+
 };
 
 
