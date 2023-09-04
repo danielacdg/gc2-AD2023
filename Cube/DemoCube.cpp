@@ -22,7 +22,8 @@ float traslationy;
 bool positivex;
 bool positivey;
 
-
+bool trasyvel;
+bool trasxvel;
 //////////////////////////////////////////////////////////////////////
 // Constructors
 
@@ -347,6 +348,40 @@ void CDemoCube::Render()
     //Transformations
     rotationz += .0001;
     rotationx += .0001;
+    // traslationy += .0001;
 
-    traslationx = -6.5;
+    if (trasxvel) {
+
+        traslationx += .0009;
+
+        if (traslationx >= 6.5) {
+
+            trasxvel = false;
+        }
+
+    }
+    else {
+        traslationx -= .0009;
+        if (traslationx <= -6.5) {
+            trasxvel = true;
+        }
+    }
+    if (trasyvel) {
+
+        traslationy += .0009;
+
+        if (traslationy >= 4.5) {
+
+            trasyvel = false;
+        }
+
+    }
+    else {
+        traslationy -= .0009;
+        if (traslationy <= -4.5) {
+            trasyvel = true;
+        }
+    }
+
+  
 }
