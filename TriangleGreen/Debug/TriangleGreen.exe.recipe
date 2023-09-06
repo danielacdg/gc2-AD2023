@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <ProjectOutputs>
+    <ProjectOutput>
+      <FullPath>A:\FCFM\Graficas 2\Practicas\Practica1\gc2-AD2023-main\TriangleGreen\Debug\TriangleGreen.exe</FullPath>
+    </ProjectOutput>
+  </ProjectOutputs>
+  <ContentFiles>
+    <ContentFile>
+      <FullPath>A:\FCFM\Graficas 2\Practicas\Practica1\gc2-AD2023-main\TriangleGreen\Debug\PixelShader.cso</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>A:\FCFM\Graficas 2\Practicas\Practica1\gc2-AD2023-main\TriangleGreen\Debug\VertexShader.cso</FullPath>
+    </ContentFile>
+  </ContentFiles>
+  <SatelliteDlls />
+  <NonRecipeFileRefs />
+</Project>
