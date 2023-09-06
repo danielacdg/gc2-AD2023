@@ -1,0 +1,12 @@
+TRANSFORMACIONES PARA PRÁCTICA DEL SISTEMA SOLAR
+
+Sol - 1 Rotación en el eje Y
+
+Planeta - 1 Escala menor en comparación al Sol
+	  1 Traslación
+	  1 Rotación en Y sobre su eje
+	  1 Rotación alrededor del Sol
+Para multiplicación de matrices de planetas:
+Escala -> Rotar -> Trasladarlo -> Rotar
+
+La luna girando alrededor de la Tierra tiene que repetir la traslación y la rotación una nueva vez para poder crear la rotación sobre la Tierra
