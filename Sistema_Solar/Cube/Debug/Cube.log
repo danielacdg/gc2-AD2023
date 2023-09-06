@@ -59,13 +59,13 @@ C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\winerror.h(56
 C:\Users\Usuario\Documents\1902402_GraficasII\Practicas\gc2-AD2023\Sistema_Solar\Cube\graphicsclass.cpp(162,48): warning C4244: 'argumento': conversión de 'double' a 'FLOAT'; posible pérdida de datos
 C:\Users\Usuario\Documents\1902402_GraficasII\Practicas\gc2-AD2023\Sistema_Solar\Cube\graphicsclass.cpp(163,46): warning C4244: 'argumento': conversión de 'double' a 'FLOAT'; posible pérdida de datos
 C:\Users\Usuario\Documents\1902402_GraficasII\Practicas\gc2-AD2023\Sistema_Solar\Cube\graphicsclass.cpp(166,45): warning C4244: 'argumento': conversión de 'double' a 'FLOAT'; posible pérdida de datos
-C:\Users\Usuario\Documents\1902402_GraficasII\Practicas\gc2-AD2023\Sistema_Solar\Cube\graphicsclass.cpp(172,44): warning C4244: 'argumento': conversión de 'double' a 'FLOAT'; posible pérdida de datos
-C:\Users\Usuario\Documents\1902402_GraficasII\Practicas\gc2-AD2023\Sistema_Solar\Cube\graphicsclass.cpp(193,44): warning C4244: 'argumento': conversión de 'double' a 'FLOAT'; posible pérdida de datos
-C:\Users\Usuario\Documents\1902402_GraficasII\Practicas\gc2-AD2023\Sistema_Solar\Cube\graphicsclass.cpp(196,44): warning C4244: 'argumento': conversión de 'double' a 'FLOAT'; posible pérdida de datos
-C:\Users\Usuario\Documents\1902402_GraficasII\Practicas\gc2-AD2023\Sistema_Solar\Cube\graphicsclass.cpp(199,44): warning C4244: 'argumento': conversión de 'double' a 'FLOAT'; posible pérdida de datos
-C:\Users\Usuario\Documents\1902402_GraficasII\Practicas\gc2-AD2023\Sistema_Solar\Cube\graphicsclass.cpp(203,43): warning C4244: 'argumento': conversión de 'double' a 'FLOAT'; posible pérdida de datos
-C:\Users\Usuario\Documents\1902402_GraficasII\Practicas\gc2-AD2023\Sistema_Solar\Cube\graphicsclass.cpp(206,44): warning C4244: 'argumento': conversión de 'double' a 'FLOAT'; posible pérdida de datos
-C:\Users\Usuario\Documents\1902402_GraficasII\Practicas\gc2-AD2023\Sistema_Solar\Cube\graphicsclass.cpp(216,45): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
-C:\Users\Usuario\Documents\1902402_GraficasII\Practicas\gc2-AD2023\Sistema_Solar\Cube\graphicsclass.cpp(219,45): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
-C:\Users\Usuario\Documents\1902402_GraficasII\Practicas\gc2-AD2023\Sistema_Solar\Cube\graphicsclass.cpp(225,45): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Usuario\Documents\1902402_GraficasII\Practicas\gc2-AD2023\Sistema_Solar\Cube\graphicsclass.cpp(174,43): warning C4244: 'argumento': conversión de 'double' a 'FLOAT'; posible pérdida de datos
+C:\Users\Usuario\Documents\1902402_GraficasII\Practicas\gc2-AD2023\Sistema_Solar\Cube\graphicsclass.cpp(195,44): warning C4244: 'argumento': conversión de 'double' a 'FLOAT'; posible pérdida de datos
+C:\Users\Usuario\Documents\1902402_GraficasII\Practicas\gc2-AD2023\Sistema_Solar\Cube\graphicsclass.cpp(198,44): warning C4244: 'argumento': conversión de 'double' a 'FLOAT'; posible pérdida de datos
+C:\Users\Usuario\Documents\1902402_GraficasII\Practicas\gc2-AD2023\Sistema_Solar\Cube\graphicsclass.cpp(201,44): warning C4244: 'argumento': conversión de 'double' a 'FLOAT'; posible pérdida de datos
+C:\Users\Usuario\Documents\1902402_GraficasII\Practicas\gc2-AD2023\Sistema_Solar\Cube\graphicsclass.cpp(204,44): warning C4244: 'argumento': conversión de 'double' a 'FLOAT'; posible pérdida de datos
+C:\Users\Usuario\Documents\1902402_GraficasII\Practicas\gc2-AD2023\Sistema_Solar\Cube\graphicsclass.cpp(207,44): warning C4244: 'argumento': conversión de 'double' a 'FLOAT'; posible pérdida de datos
+C:\Users\Usuario\Documents\1902402_GraficasII\Practicas\gc2-AD2023\Sistema_Solar\Cube\graphicsclass.cpp(217,45): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Usuario\Documents\1902402_GraficasII\Practicas\gc2-AD2023\Sistema_Solar\Cube\graphicsclass.cpp(220,45): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\Usuario\Documents\1902402_GraficasII\Practicas\gc2-AD2023\Sistema_Solar\Cube\graphicsclass.cpp(226,45): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
   Cube.vcxproj -> C:\Users\Usuario\Documents\1902402_GraficasII\Practicas\gc2-AD2023\Sistema_Solar\Debug\Sistema_Solar.exe

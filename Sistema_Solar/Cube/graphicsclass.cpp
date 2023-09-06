@@ -166,10 +166,12 @@ bool GraphicsClass::Render(float rotation){
 	D3DXMatrixRotationY(&MartMatrix, -rotation * 0.1);
 
 	//Logica de la Luna
-	D3DXMatrixTranslation(&auxMatrix, 20, 0.0, 0.0);
+	D3DXMatrixTranslation(&auxMatrix, 5.0, 0.0, 0.0);
 	D3DXMatrixMultiply(&MoonMatrix, &MoonMatrix, &auxMatrix);
 
-	D3DXMatrixRotationY(&auxMatrix, -rotation * 0.5);
+	D3DXMatrixRotationY(&auxMatrix, rotation * 2);
+	D3DXMatrixMultiply(&MoonMatrix, &MoonMatrix, &auxMatrix);
+	D3DXMatrixRotationX(&auxMatrix, rotation * 0.05);
 	D3DXMatrixMultiply(&MoonMatrix, &MoonMatrix, &auxMatrix);
 
 
@@ -183,7 +185,7 @@ bool GraphicsClass::Render(float rotation){
 	D3DXMatrixTranslation(&auxMatrix, 15.0, 0.0, 0.0);
 	D3DXMatrixMultiply(&EarthMatrix, &EarthMatrix, &auxMatrix);
 
-	D3DXMatrixTranslation(&auxMatrix, 20.0, 0.0, 0.0);
+	D3DXMatrixTranslation(&auxMatrix, 32.5, 0.0, 0.0);
 	D3DXMatrixMultiply(&MoonMatrix, &MoonMatrix, &auxMatrix);
 
 	D3DXMatrixTranslation(&auxMatrix, 19.0, 0.0, 0.0);
