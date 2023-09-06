@@ -1,0 +1,3 @@
+C:\Users\Usuario\Documents\Graficas2-AD2023\gc2-AD2023\Cube\Debug\Cube.exe
+C:\Users\Cgarz\OneDrive\Escritorio\Graficas_Computacionales 2\Practicas\gc2-AD2023\Cube\Debug\Cube.exe
+C:\Users\Cgarz\OneDrive\Escritorio\Graficas_Computacionales 2\MisPracticas\gc2-AD2023\Cube\Debug\Cube.exe
