@@ -16,5 +16,5 @@ float4 PS_Main(PS_Input frag) : SV_TARGET
 
     float4 textura = colorMap.Sample(colorSampler, frag.tex0);
     return textura;
-    
+
 }

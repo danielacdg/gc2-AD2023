@@ -1,0 +1,4 @@
+C:\Users\lenovo\Documents\GitHub\GC2\gc2-AD2023\Cube\Debug\PixelShader.cso
+C:\Users\lenovo\Documents\GitHub\GC2\gc2-AD2023\Cube\Debug\VertexShader.cso
+C:\Users\lenovo\Documents\GitHub\GC2\gc2-AD2023\Cube\Debug\Cube.exe
+C:\Users\lenovo\Documents\GitHub\GC2\gc2-AD2023\Cube\Debug\Cube.pdb
