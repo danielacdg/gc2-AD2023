@@ -164,75 +164,93 @@ bool GraphicsClass::Render(float rotation) {
 	// Rotate the world matrix by the rotation value so that the triangle will spin.
 
 	//Rotación del cuerpo
-	D3DXMatrixRotationY(&SunMatrix, -rotation); // sol
-	D3DXMatrixRotationY(&MercuryMatrix, -rotation * 1.5); // mercurio
-	D3DXMatrixRotationY(&VenusMatrix, -rotation * 0.5); // venus
-	D3DXMatrixRotationY(&EarthMatrix, -rotation * 1.0); // tierra
-	D3DXMatrixRotationY(&MoonMatrix, -rotation * 0.3); // luna 
-	D3DXMatrixRotationY(&MartMatrix, -rotation * 0.3); // luna 
+	D3DXMatrixRotationY(&SunMatrix, -rotation);
+
+	D3DXMatrixRotationY(&MercuryMatrix, -rotation * 1.5);
+
+	D3DXMatrixRotationY(&VenusMatrix, -rotation * 0.5);
+
+	D3DXMatrixRotationY(&EarthMatrix, -rotation * 1.0);
+
+	D3DXMatrixRotationY(&MoonMatrix, -rotation * 0.3); 
+
+	D3DXMatrixRotationY(&MartMatrix, -rotation * 0.3); 
 
 	//Distanciar de la tierra a la luna
 	D3DXMatrixTranslation(&auxMatrix, 7.0, 0, 0);
-	D3DXMatrixMultiply(&MoonMatrix, &MoonMatrix, &auxMatrix); // distanciar luna
+	D3DXMatrixMultiply(&MoonMatrix, &MoonMatrix, &auxMatrix); 
 
 	//rotar la luna de la tierra
 	D3DXMatrixRotationY(&auxMatrix, -rotation * 0.7);
-	D3DXMatrixMultiply(&MoonMatrix, &MoonMatrix, &auxMatrix); // gira sobre el sol la luna
+	D3DXMatrixMultiply(&MoonMatrix, &MoonMatrix, &auxMatrix); 
 
-	//Distanciar del sol(Traslación)
+	//Distanciar del sol (Traslación)
 
-	//mercurio
+	// Mercurio
 	D3DXMatrixTranslation(&auxMatrix, 5, 0, 0);
-	D3DXMatrixMultiply(&MercuryMatrix, &MercuryMatrix, &auxMatrix); // distanciar mercurio
-	//venus
+	D3DXMatrixMultiply(&MercuryMatrix, &MercuryMatrix, &auxMatrix); 
+
+	// Venus
 	D3DXMatrixTranslation(&auxMatrix, 5.5, 0, 0);
-	D3DXMatrixMultiply(&VenusMatrix, &VenusMatrix, &auxMatrix); // distanciar venus
-	//tierra
+	D3DXMatrixMultiply(&VenusMatrix, &VenusMatrix, &auxMatrix); 
+
+	// Tierra
 	D3DXMatrixTranslation(&auxMatrix, 7.5, 0, 0);
-	D3DXMatrixMultiply(&EarthMatrix, &EarthMatrix, &auxMatrix); // distanciar tierra
-	//luna
+	D3DXMatrixMultiply(&EarthMatrix, &EarthMatrix, &auxMatrix); 
+
+	// Luna
 	D3DXMatrixTranslation(&auxMatrix, 25, 0, 0);
-	D3DXMatrixMultiply(&MoonMatrix, &MoonMatrix, &auxMatrix); // distanciar luna del sol
-	//marte
+	D3DXMatrixMultiply(&MoonMatrix, &MoonMatrix, &auxMatrix); 
+
+	// Marte
 	D3DXMatrixTranslation(&auxMatrix, 15, 0, 0);
-	D3DXMatrixMultiply(&MartMatrix, &MartMatrix, &auxMatrix); // distanciar marte del sol
+	D3DXMatrixMultiply(&MartMatrix, &MartMatrix, &auxMatrix); 
 
-	//Mov. de Traslación(Rotación con sol en centro)
-	//mercurio
+	//Movimiento de Traslación (Rotación con sol en centro)
+	
+	// Mercurio
 	D3DXMatrixRotationY(&auxMatrix, -rotation * 0.7);
-	D3DXMatrixMultiply(&MercuryMatrix, &MercuryMatrix, &auxMatrix); // gita sobre el sol mercurio	
-	//venus
-	D3DXMatrixRotationY(&auxMatrix, -rotation * 0.7);
-	D3DXMatrixMultiply(&VenusMatrix, &VenusMatrix, &auxMatrix); // gira sobre el sol venus
-	//tierra
-	D3DXMatrixRotationY(&auxMatrix, -rotation * 0.7);
-	D3DXMatrixMultiply(&EarthMatrix, &EarthMatrix, &auxMatrix); // gira sobre el sol venus
-	//Luna
-	D3DXMatrixRotationY(&auxMatrix, -rotation * 0.7);
-	D3DXMatrixMultiply(&MoonMatrix, &MoonMatrix, &auxMatrix); // gira sobre el sol la luna
-	//marte
-	D3DXMatrixRotationY(&auxMatrix, -rotation * 0.7);
-	D3DXMatrixMultiply(&MartMatrix, &MartMatrix, &auxMatrix); // gira sobre el sol marte
+	D3DXMatrixMultiply(&MercuryMatrix, &MercuryMatrix, &auxMatrix); 
 
+	// Venus
+	D3DXMatrixRotationY(&auxMatrix, -rotation * 0.7);
+	D3DXMatrixMultiply(&VenusMatrix, &VenusMatrix, &auxMatrix); 
 
-	//Escala del cuerpo
+	// Tierra
+	D3DXMatrixRotationY(&auxMatrix, -rotation * 0.7);
+	D3DXMatrixMultiply(&EarthMatrix, &EarthMatrix, &auxMatrix); 
+
+	// Luna
+	D3DXMatrixRotationY(&auxMatrix, -rotation * 0.7);
+	D3DXMatrixMultiply(&MoonMatrix, &MoonMatrix, &auxMatrix); 
+
+	// Marte
+	D3DXMatrixRotationY(&auxMatrix, -rotation * 0.7);
+	D3DXMatrixMultiply(&MartMatrix, &MartMatrix, &auxMatrix); 
+
+	// Escala del cuerpo
 	D3DXMatrixScaling(&auxMatrix, 5.5, 5.5, 5.5);
-	D3DXMatrixMultiply(&SunMatrix, &SunMatrix, &auxMatrix); // primer parametro donde lo guardamos y las dos restantes son la multiplicacion
-	//mercurio
+	D3DXMatrixMultiply(&SunMatrix, &SunMatrix, &auxMatrix); 
+
+	// Mercurio
 	D3DXMatrixScaling(&auxMatrix, 1.5, 1.5, 1.5);
-	D3DXMatrixMultiply(&MercuryMatrix, &MercuryMatrix, &auxMatrix); // escalar mercurio
-	//venus
+	D3DXMatrixMultiply(&MercuryMatrix, &MercuryMatrix, &auxMatrix); 
+
+	// Venus
 	D3DXMatrixScaling(&auxMatrix, 2.5, 2.5, 2.5);
-	D3DXMatrixMultiply(&VenusMatrix, &VenusMatrix, &auxMatrix); // escalar venus
-	//tierra
+	D3DXMatrixMultiply(&VenusMatrix, &VenusMatrix, &auxMatrix); 
+
+	// Tierra
 	D3DXMatrixScaling(&auxMatrix, 2.9, 2.9, 2.9);
-	D3DXMatrixMultiply(&EarthMatrix, &EarthMatrix, &auxMatrix); // escalar tierra
-	//luna
+	D3DXMatrixMultiply(&EarthMatrix, &EarthMatrix, &auxMatrix); 
+
+	// Luna
 	D3DXMatrixScaling(&auxMatrix, 1, 1, 1);
-	D3DXMatrixMultiply(&MoonMatrix, &MoonMatrix, &auxMatrix); // escalar luna
-	//Marte
+	D3DXMatrixMultiply(&MoonMatrix, &MoonMatrix, &auxMatrix); 
+
+	// Marte
 	D3DXMatrixScaling(&auxMatrix, 2.3, 2.3, 2.3);
-	D3DXMatrixMultiply(&MartMatrix, &MartMatrix, &auxMatrix); // escalar luna
+	D3DXMatrixMultiply(&MartMatrix, &MartMatrix, &auxMatrix); 
 
 	//Orientar textura de planeta
 	D3DXMatrixRotationX(&traMatrix, 180);
@@ -244,10 +262,10 @@ bool GraphicsClass::Render(float rotation) {
 	//Sol
 	result = m_LightShader->Render(m_D3D->GetDeviceContext(),
 		m_Model->GetIndexCount(),
-		SunMatrix, // mundo
+		SunMatrix,
 		viewMatrix,
 		projectionMatrix,
-		traMatrix, // textura
+		traMatrix, 
 		m_Model->GetTexture(),
 		m_Model->GetTexture2(),
 		m_Light->GetDirection(),
@@ -256,13 +274,13 @@ bool GraphicsClass::Render(float rotation) {
 	if (!result)
 		return false;
 
-	//Mercurio
+	// Mercurio
 	result = m_LightShader->Render(m_D3D->GetDeviceContext(),
 		m_Model->GetIndexCount(),
-		MercuryMatrix, // mundo
+		MercuryMatrix, 
 		viewMatrix,
 		projectionMatrix,
-		traMatrix, // textura
+		traMatrix, 
 		m_Model->GetTexture3(),
 		m_Model->GetTexture2(),
 		m_Light->GetDirection(),
@@ -271,13 +289,13 @@ bool GraphicsClass::Render(float rotation) {
 	if (!result)
 		return false;
 
-	//Venus
+	// Venus
 	result = m_LightShader->Render(m_D3D->GetDeviceContext(),
 		m_Model->GetIndexCount(),
-		VenusMatrix, // mundo
+		VenusMatrix, 
 		viewMatrix,
 		projectionMatrix,
-		traMatrix, // textura
+		traMatrix, 
 		m_Model->GetTexture4(),
 		m_Model->GetTexture2(),
 		m_Light->GetDirection(),
@@ -286,13 +304,13 @@ bool GraphicsClass::Render(float rotation) {
 	if (!result)
 		return false;
 
-	//Tierra
+	// Tierra
 	result = m_LightShader->Render(m_D3D->GetDeviceContext(),
 		m_Model->GetIndexCount(),
-		EarthMatrix, // mundo
+		EarthMatrix, 
 		viewMatrix,
 		projectionMatrix,
-		traMatrix, // textura
+		traMatrix,
 		m_Model->GetTexture5(),
 		m_Model->GetTexture2(),
 		m_Light->GetDirection(),
@@ -300,13 +318,13 @@ bool GraphicsClass::Render(float rotation) {
 
 	if (!result)
 		return false;
-	//Luna
+	// Luna
 	result = m_LightShader->Render(m_D3D->GetDeviceContext(),
 		m_Model->GetIndexCount(),
-		MoonMatrix, // mundo
+		MoonMatrix, 
 		viewMatrix,
 		projectionMatrix,
-		traMatrix, // textura
+		traMatrix, 
 		m_Model->GetTexture6(),
 		m_Model->GetTexture2(),
 		m_Light->GetDirection(),
@@ -315,13 +333,13 @@ bool GraphicsClass::Render(float rotation) {
 	if (!result)
 		return false;
 
-	//Marte
+	// Marte
 	result = m_LightShader->Render(m_D3D->GetDeviceContext(),
 		m_Model->GetIndexCount(),
-		MartMatrix, // mundo
+		MartMatrix, 
 		viewMatrix,
 		projectionMatrix,
-		traMatrix, // textura
+		traMatrix, 
 		m_Model->GetTexture7(),
 		m_Model->GetTexture2(),
 		m_Light->GetDirection(),
