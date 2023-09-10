@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <ProjectOutputs>
+    <ProjectOutput>
+      <FullPath>D:\Documentos\UNIVERSIDAD\Universidad Agosto - Diciembre 2023\Gráficas computacionales ll\Practicas_Terminadas\2-Practica-textura\Texture\Debug\Texture.exe</FullPath>
+    </ProjectOutput>
+  </ProjectOutputs>
+  <ContentFiles>
+    <ContentFile>
+      <FullPath>D:\Documentos\UNIVERSIDAD\Universidad Agosto - Diciembre 2023\Gráficas computacionales ll\Practicas_Terminadas\2-Practica-textura\Texture\Debug\PixelShader.cso</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>D:\Documentos\UNIVERSIDAD\Universidad Agosto - Diciembre 2023\Gráficas computacionales ll\Practicas_Terminadas\2-Practica-textura\Texture\Debug\VertexShader.cso</FullPath>
+    </ContentFile>
+  </ContentFiles>
+  <SatelliteDlls />
+  <NonRecipeFileRefs />
+</Project>
