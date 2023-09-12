@@ -121,6 +121,6 @@ C:\Users\Administrator\Desktop\Graficas2\gc2-AD2023\Cube\DemoCube.cpp(348,21): w
 C:\Users\Administrator\Desktop\Graficas2\gc2-AD2023\Cube\DemoCube.cpp(349,21): warning C4305: '+=': truncamiento de 'double' a 'float'
 C:\Users\Administrator\Desktop\Graficas2\gc2-AD2023\Cube\DemoCube.cpp(351,27): warning C4305: '+=': truncamiento de 'double' a 'float'
 C:\Users\Administrator\Desktop\Graficas2\gc2-AD2023\Cube\DemoCube.cpp(357,27): warning C4305: '-=': truncamiento de 'double' a 'float'
-C:\Users\Administrator\Desktop\Graficas2\gc2-AD2023\Cube\DemoCube.cpp(363,27): warning C4305: '+=': truncamiento de 'double' a 'float'
-C:\Users\Administrator\Desktop\Graficas2\gc2-AD2023\Cube\DemoCube.cpp(369,27): warning C4305: '-=': truncamiento de 'double' a 'float'
+C:\Users\Administrator\Desktop\Graficas2\gc2-AD2023\Cube\DemoCube.cpp(364,27): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\Administrator\Desktop\Graficas2\gc2-AD2023\Cube\DemoCube.cpp(370,27): warning C4305: '-=': truncamiento de 'double' a 'float'
   Cube.vcxproj -> C:\Users\Administrator\Desktop\Graficas2\gc2-AD2023\Cube\Debug\Cube.exe
