@@ -292,6 +292,34 @@ void CDemoCube::UnloadContent()
 
 void CDemoCube::Update()
 {
+    rotationx += 0.0005;
+    rotationz += 0.0005;
+
+    if (positivex) {
+        traslationx += .006;
+        if (traslationx >= 6.5) {
+            positivex = false;
+        }
+    }
+    else {
+        traslationx -= .006;
+        if (traslationx <= -6.5) {
+            positivex = true;
+        }
+    }
+
+    if (positivey) {
+        traslationy += .008;
+        if (traslationy >= 4.5) {
+            positivey = false;
+        }
+    }
+    else {
+        traslationy -= .008;
+        if (traslationy <= -4.5) {
+            positivey = true;
+        }
+    }
 }
 
 void CDemoCube::Render()
@@ -345,32 +373,5 @@ void CDemoCube::Render()
     m_pSwapChain->Present(0, 0);
 
     //Transformations
-    rotationx += 0.0005;
-    rotationz += 0.0005;
-
-    if (positivex) {
-        traslationx += .006;
-        if (traslationx >= 6.5) {
-            positivex = false;
-        }
-    }
-    else {
-        traslationx -= .006;
-        if (traslationx <= -6.5) {
-            positivex = true;
-        }
-    }
-
-    if (positivey) {
-        traslationy += .008;
-        if (traslationy >= 4.5) {
-            positivey = false;
-        }
-    }
-    else {
-        traslationy -= .008;
-        if (traslationy <= -4.5) {
-            positivey = true;
-        }
-    }
+    
 }

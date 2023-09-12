@@ -117,10 +117,10 @@ C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\xnamathvector.i
 C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\xnamathmisc.inl(518,43): warning C4838: la conversión de 'unsigned int' en 'INT' requiere una conversión de restricción
 C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\xnamathmisc.inl(519,40): warning C4838: la conversión de 'unsigned int' en 'INT' requiere una conversión de restricción
 C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\xnamathmisc.inl(519,51): warning C4838: la conversión de 'unsigned int' en 'INT' requiere una conversión de restricción
-D:\Gallo\Escuela\GCII\gc2-AD2023\Cube\DemoCube.cpp(348,24): warning C4305: '+=': truncamiento de 'double' a 'float'
-D:\Gallo\Escuela\GCII\gc2-AD2023\Cube\DemoCube.cpp(349,24): warning C4305: '+=': truncamiento de 'double' a 'float'
-D:\Gallo\Escuela\GCII\gc2-AD2023\Cube\DemoCube.cpp(352,28): warning C4305: '+=': truncamiento de 'double' a 'float'
-D:\Gallo\Escuela\GCII\gc2-AD2023\Cube\DemoCube.cpp(358,28): warning C4305: '-=': truncamiento de 'double' a 'float'
-D:\Gallo\Escuela\GCII\gc2-AD2023\Cube\DemoCube.cpp(365,28): warning C4305: '+=': truncamiento de 'double' a 'float'
-D:\Gallo\Escuela\GCII\gc2-AD2023\Cube\DemoCube.cpp(371,28): warning C4305: '-=': truncamiento de 'double' a 'float'
+D:\Gallo\Escuela\GCII\gc2-AD2023\Cube\DemoCube.cpp(295,24): warning C4305: '+=': truncamiento de 'double' a 'float'
+D:\Gallo\Escuela\GCII\gc2-AD2023\Cube\DemoCube.cpp(296,24): warning C4305: '+=': truncamiento de 'double' a 'float'
+D:\Gallo\Escuela\GCII\gc2-AD2023\Cube\DemoCube.cpp(299,28): warning C4305: '+=': truncamiento de 'double' a 'float'
+D:\Gallo\Escuela\GCII\gc2-AD2023\Cube\DemoCube.cpp(305,28): warning C4305: '-=': truncamiento de 'double' a 'float'
+D:\Gallo\Escuela\GCII\gc2-AD2023\Cube\DemoCube.cpp(312,28): warning C4305: '+=': truncamiento de 'double' a 'float'
+D:\Gallo\Escuela\GCII\gc2-AD2023\Cube\DemoCube.cpp(318,28): warning C4305: '-=': truncamiento de 'double' a 'float'
   Cube.vcxproj -> D:\Gallo\Escuela\GCII\gc2-AD2023\Cube\Debug\Cube.exe
