@@ -5,8 +5,7 @@
 Texture2D colorMap : register(t0);
 SamplerState colorSampler : register(s0);
 
-struct PS_Input
-{
+struct PS_Input {
     float4 pos : SV_POSITION;
     float2 tex0 : TEXCOORD0;
 };
