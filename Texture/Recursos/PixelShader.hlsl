@@ -17,7 +17,7 @@ float4 PS_Main(PS_Input frag) : SV_TARGET
     float4 color1 = colorMap.Sample(colorSampler, frag.uv);
     float4 color2 = colorMap1.Sample(colorSampler, frag.uv);
 
-    float4 colorFinal = color1 + color2;
+    float4 colorFinal = color1 * color2;
 
     return colorFinal;
 }
