@@ -1,0 +1,27 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: El directorio intermedio (Debug\) contiene archivos compartidos de otro proyecto (Cube.vcxproj). Esto puede dar lugar a un comportamiento incorrecto de limpieza y recompilación.
+  cameraclass.cpp
+C:\Users\bodhi\Desktop\7 Semestre\Graficas 2\Practicas\gc2-AD2023-practicas-gaelEdgardoPerezDeLeon\Sistema_Solar\Cube\cameraclass.h(10,10): fatal error C1083: No se puede abrir el archivo incluir: 'D3DX10math.h': No such file or directory
+  colorshaderclass.cpp
+C:\Users\bodhi\Desktop\7 Semestre\Graficas 2\Practicas\gc2-AD2023-practicas-gaelEdgardoPerezDeLeon\Sistema_Solar\Cube\colorshaderclass.h(11,10): fatal error C1083: No se puede abrir el archivo incluir: 'D3DX10math.h': No such file or directory
+  cubeclass.cpp
+C:\Users\bodhi\Desktop\7 Semestre\Graficas 2\Practicas\gc2-AD2023-practicas-gaelEdgardoPerezDeLeon\Sistema_Solar\Cube\Cubeclass.h(11,10): fatal error C1083: No se puede abrir el archivo incluir: 'D3DX10math.h': No such file or directory
+  d3dclass.cpp
+C:\Users\bodhi\Desktop\7 Semestre\Graficas 2\Practicas\gc2-AD2023-practicas-gaelEdgardoPerezDeLeon\Sistema_Solar\Cube\D3dclass.h(21,10): fatal error C1083: No se puede abrir el archivo incluir: 'D3DX10math.h': No such file or directory
+  graphicsclass.cpp
+C:\Users\bodhi\Desktop\7 Semestre\Graficas 2\Practicas\gc2-AD2023-practicas-gaelEdgardoPerezDeLeon\Sistema_Solar\Cube\d3dclass.h(21,10): fatal error C1083: No se puede abrir el archivo incluir: 'D3DX10math.h': No such file or directory
+  inputclass.cpp
+  lightclass.cpp
+C:\Users\bodhi\Desktop\7 Semestre\Graficas 2\Practicas\gc2-AD2023-practicas-gaelEdgardoPerezDeLeon\Sistema_Solar\Cube\lightclass.h(10,10): fatal error C1083: No se puede abrir el archivo incluir: 'D3DX10math.h': No such file or directory
+  lightshaderclass.cpp
+C:\Users\bodhi\Desktop\7 Semestre\Graficas 2\Practicas\gc2-AD2023-practicas-gaelEdgardoPerezDeLeon\Sistema_Solar\Cube\lightshaderclass.h(12,10): fatal error C1083: No se puede abrir el archivo incluir: 'd3dx10math.h': No such file or directory
+  main.cpp
+C:\Users\bodhi\Desktop\7 Semestre\Graficas 2\Practicas\gc2-AD2023-practicas-gaelEdgardoPerezDeLeon\Sistema_Solar\Cube\d3dclass.h(21,10): fatal error C1083: No se puede abrir el archivo incluir: 'D3DX10math.h': No such file or directory
+  modelclass.cpp
+C:\Users\bodhi\Desktop\7 Semestre\Graficas 2\Practicas\gc2-AD2023-practicas-gaelEdgardoPerezDeLeon\Sistema_Solar\Cube\modelclass.h(11,10): fatal error C1083: No se puede abrir el archivo incluir: 'D3DX10math.h': No such file or directory
+  systemclass.cpp
+C:\Users\bodhi\Desktop\7 Semestre\Graficas 2\Practicas\gc2-AD2023-practicas-gaelEdgardoPerezDeLeon\Sistema_Solar\Cube\d3dclass.h(21,10): fatal error C1083: No se puede abrir el archivo incluir: 'D3DX10math.h': No such file or directory
+  textureclass.cpp
+C:\Users\bodhi\Desktop\7 Semestre\Graficas 2\Practicas\gc2-AD2023-practicas-gaelEdgardoPerezDeLeon\Sistema_Solar\Cube\textureclass.h(11,9): fatal error C1083: No se puede abrir el archivo incluir: 'D3DX11tex.h': No such file or directory
+  textureshaderclass.cpp
+C:\Users\bodhi\Desktop\7 Semestre\Graficas 2\Practicas\gc2-AD2023-practicas-gaelEdgardoPerezDeLeon\Sistema_Solar\Cube\textureshaderclass.h(12,10): fatal error C1083: No se puede abrir el archivo incluir: 'd3dx10math.h': No such file or directory
+  Generando código...
