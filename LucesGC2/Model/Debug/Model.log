@@ -1,0 +1,9 @@
+﻿  DemoModel.cpp
+C:\Users\LMAD-04\Documents\1902402 - GraficasII\PRACTICA\gc2-AD2023\LucesGC2\Model\Dx11Base.h(10,10): fatal error C1083: No se puede abrir el archivo incluir: 'd3dx11.h': No such file or directory
+  Dx11Base.cpp
+C:\Users\LMAD-04\Documents\1902402 - GraficasII\PRACTICA\gc2-AD2023\LucesGC2\Model\Dx11Base.h(10,10): fatal error C1083: No se puede abrir el archivo incluir: 'd3dx11.h': No such file or directory
+  main.cpp
+C:\Users\LMAD-04\Documents\1902402 - GraficasII\PRACTICA\gc2-AD2023\LucesGC2\Model\Dx11Base.h(10,10): fatal error C1083: No se puede abrir el archivo incluir: 'd3dx11.h': No such file or directory
+  ObjParser.cpp
+C:\Users\LMAD-04\Documents\1902402 - GraficasII\PRACTICA\gc2-AD2023\LucesGC2\Model\ObjParser.h(9,10): fatal error C1083: No se puede abrir el archivo incluir: 'xnamath.h': No such file or directory
+  Generando código...
