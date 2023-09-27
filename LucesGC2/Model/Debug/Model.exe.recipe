@@ -2,12 +2,12 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\Users\danie\Desktop\PERSONAL\FCFM\Gráficas\Repositorio Alumnos\gc2-AD2023\LucesGC2\Model\Debug\Model.exe</FullPath>
+      <FullPath>C:\Users\Usuario\Documents\Graficas2-AD2023\gc2-AD2023\LucesGC2\Model\Debug\Model.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles>
     <ContentFile>
-      <FullPath>C:\Users\danie\Desktop\PERSONAL\FCFM\Gráficas\Repositorio Alumnos\gc2-AD2023\LucesGC2\Model\Debug\ShaderLighting.cso</FullPath>
+      <FullPath>C:\Users\Usuario\Documents\Graficas2-AD2023\gc2-AD2023\LucesGC2\Model\Debug\ShaderLighting.cso</FullPath>
     </ContentFile>
   </ContentFiles>
   <SatelliteDlls />

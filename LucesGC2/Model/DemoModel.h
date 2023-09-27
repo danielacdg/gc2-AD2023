@@ -49,7 +49,8 @@ protected:
     XMFLOAT3 m_SphericalCameraPos;
 
     //Color de Luz Difusa
-    
+    ID3D11Buffer* m_pDiffuseColorCB;
+    XMFLOAT3 m_DiffuseColor;
 };
 
 

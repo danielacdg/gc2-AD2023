@@ -9,6 +9,7 @@
 
 //////////////////////////////////////////////////////////////////////
 // Constructors
+XMFLOAT3 color;
 
 CDemoModel::CDemoModel()
 {
@@ -24,6 +25,8 @@ CDemoModel::CDemoModel()
     m_pCameraPosCB = NULL;
     m_SphericalCamera = XMFLOAT3(0.0f, 0.0f, -5.5f); // rx, ry, distance
     m_SphericalCameraPos = m_SphericalCamera;
+    color = XMFLOAT3(0.8f, 0.3f, 0.0f);
+    m_DiffuseColor = color;
 }
 
 CDemoModel::~CDemoModel()
@@ -37,7 +40,7 @@ CDemoModel::~CDemoModel()
 bool CDemoModel::LoadContent()
 {
     // Load OBJ file
-    bool res = m_ObjParser.LoadFile("Recursos/planet2.obj");
+    bool res = m_ObjParser.LoadFile("Recursos/scificube.obj");
     //bool res = m_ObjParser.LoadFile("Cube.txt");
     if (res == false) {
         ::MessageBox(m_hWnd, L"Unable to load OBJ file", L"ERROR", MB_OK);
@@ -61,7 +64,6 @@ bool CDemoModel::LoadContent()
     if (FAILED(hr)) {
         return false;
     }
-
 
     // Compile vertex shader
     ID3DBlob* pVSBuffer = NULL;
@@ -170,6 +172,16 @@ bool CDemoModel::LoadContent()
     }
     
     //Buffer para la posición de la cámara
+    constBufferDesc.ByteWidth = sizeof(XMFLOAT4);
+    hr = m_pD3DDevice->CreateBuffer(&constBufferDesc, 0, &m_pCameraPosCB);
+    if (FAILED(hr)) {
+        return false;
+    }
+    //Buffer para la luz Difusa
+    hr = m_pD3DDevice->CreateBuffer(&constBufferDesc, 0, &m_pDiffuseColorCB);
+    if (FAILED(hr)) {
+        return false;
+    }
 
     // Initialize matrixes
     m_projMatrix = XMMatrixPerspectiveFovLH(XM_PIDIV4, 640.0f / 480.0f, 0.01f, 1000.0f);
@@ -256,18 +268,25 @@ void CDemoModel::Render()
     w = XMMatrixTranspose(w * r * t);
 
     //Cambiar color de luz difusa
-    ////////////
-
+    m_DiffuseColor = XMFLOAT3(0.8f, 0.8f, 0.0f);
+    //m_DiffuseColor = ChangeColor(m_DiffuseColor);
 
     // Update constant buffers
     m_pD3DContext->UpdateSubresource(m_pWorldCB, 0, 0, &w, 0, 0);
     m_pD3DContext->UpdateSubresource(m_pViewCB, 0, 0, &m_viewMatrix, 0, 0);
     m_pD3DContext->UpdateSubresource(m_pProjCB, 0, 0, &m_projMatrix, 0, 0);
 
+    m_pD3DContext->UpdateSubresource(m_pCameraPosCB, 0, 0, &m_SphericalCameraPos, 0, 0);
+    m_pD3DContext->UpdateSubresource(m_pDiffuseColorCB, 0, 0, &m_DiffuseColor, 0, 0);
+
+
     // Upload constant buffers to GPU
     m_pD3DContext->VSSetConstantBuffers(0, 1, &m_pWorldCB);
     m_pD3DContext->VSSetConstantBuffers(1, 1, &m_pViewCB);
     m_pD3DContext->VSSetConstantBuffers(2, 1, &m_pProjCB);
+
+    m_pD3DContext->VSSetConstantBuffers(3, 1, &m_pCameraPosCB);
+    m_pD3DContext->VSSetConstantBuffers(4, 1, &m_pDiffuseColorCB);
 
     // Draw triangles
     m_pD3DContext->Draw(m_ObjParser.m_nVertexCount, 0);
