@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <ProjectOutputs>
+    <ProjectOutput>
+      <FullPath>D:\Documentos\UNIVERSIDAD\Universidad Agosto - Diciembre 2023\Gráficas computacionales ll\Git_practicasJohan\gc2-AD2023\5.-Luces\Model\Debug\Model.exe</FullPath>
+    </ProjectOutput>
+  </ProjectOutputs>
+  <ContentFiles>
+    <ContentFile>
+      <FullPath>D:\Documentos\UNIVERSIDAD\Universidad Agosto - Diciembre 2023\Gráficas computacionales ll\Git_practicasJohan\gc2-AD2023\5.-Luces\Model\Debug\ShaderLighting.cso</FullPath>
+    </ContentFile>
+  </ContentFiles>
+  <SatelliteDlls />
+  <NonRecipeFileRefs />
+</Project>

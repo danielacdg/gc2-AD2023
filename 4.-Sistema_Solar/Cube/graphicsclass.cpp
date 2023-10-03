@@ -170,6 +170,7 @@ bool GraphicsClass::Render(float rotation) {
 	D3DXMatrixRotationY(&EarthMatrix, -rotation * 1.0); // tierra
 	D3DXMatrixRotationY(&MoonMatrix, -rotation * 0.3); // luna 
 	D3DXMatrixRotationY(&MartMatrix, -rotation * 0.3); // luna 
+	
 
 	//Distanciar de la tierra a la luna
 	D3DXMatrixTranslation(&auxMatrix, 7.0, 0, 0);
