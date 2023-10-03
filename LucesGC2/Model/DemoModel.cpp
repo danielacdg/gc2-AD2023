@@ -271,7 +271,9 @@ void CDemoModel::Render()
     w = XMMatrixTranspose(w * r * t);
 
     //Cambiar color de luz difusa
-    m_colorDifuso = XMFLOAT3(0.5f, 0.5f, 0.0f);
+    AnimarColores();
+    m_colorDifuso = XMFLOAT3(colorR, colorG, colorB);
+    
     //PRACTICA DE CAMBIO DE COLOR AQUI CON UNA FUNCION NUEVA
 
     // Update constant buffers
@@ -322,4 +324,57 @@ void CDemoModel::CalcSphericalCamera()
     m_SphericalCameraPos.x = XMVectorGetX(pos);
     m_SphericalCameraPos.y = XMVectorGetY(pos);
     m_SphericalCameraPos.z = XMVectorGetZ(pos);
+}
+
+void CDemoModel::AnimarColores() {
+    if (positiveR == true)
+    {
+        colorR = colorR + 0.00003f;
+        if (colorR >= 0.9f)
+        {
+            positiveR = false;
+        }
+    }
+    else
+    {
+        colorR = colorR - 0.00003f;
+        if (colorR <= 0.0)
+        {
+            positiveR = true;
+        }
+    }
+
+    /*if (positiveB == true)
+    {
+        colorB = colorB + 0.008f;
+        if (colorB >= 0.8f)
+        {
+            positiveB = false;
+        }
+    }
+    else
+    {
+        colorB = colorB - 0.008f;
+        if (colorB <= 0.0)
+        {
+            positiveB = true;
+        }
+    }*/
+
+    if (positiveG == true)
+    {
+        colorG = colorG + 0.00005f;
+        if (colorG >= 0.9f)
+        {
+            positiveG = false;
+        }
+    }
+    else
+    {
+        colorG = colorG - 0.00005f;
+        if (colorG <= 0.0)
+        {
+            positiveG = true;
+        }
+    }
 }

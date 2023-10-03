@@ -28,6 +28,7 @@ public:
 // Implementation
 protected:
     void CalcSphericalCamera();
+    void AnimarColores();
     XMFLOAT3 ChangeColor(XMFLOAT3 arcoiris);
 
 // Members
@@ -52,6 +53,10 @@ protected:
     ID3D11Buffer* m_pDiffuseColorCB;
     XMFLOAT3 m_DiffuseColor;
     XMFLOAT3 m_colorDifuso;
+
+    //
+    bool positiveR = true, positiveG = true, positiveB = true;
+    float colorR = 0.0f, colorG = 0.4, colorB = 0.2;
 };
 
 
