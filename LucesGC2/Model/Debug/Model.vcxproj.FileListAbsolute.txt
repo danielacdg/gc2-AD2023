@@ -1,0 +1,9 @@
+C:\Users\fgarc\Desktop\FelipeD\Facultad\Vacante\Drive\Model\Debug\Model.exe
+C:\Users\fgarc\Desktop\FelipeD\Facultad\GC2\Clase 5\Model\Debug\Model.exe
+C:\Users\fgarc\Desktop\FelipeD\Facultad\GC2\Clase 6\Model\Debug\Model.exe
+C:\Users\danie\Desktop\PERSONAL\FCFM\Gráficas\Repositorio Alumnos\gc2-AD2023\LucesGC2\Model\Debug\Model.exe
+C:\Users\Usuario20\Documents\christianGarzaValladares\repoClases\gc2-AD2023\LucesGC2\Model\Debug\Model.exe
+C:\Users\Cgarz\Downloads\LucesGC2\LucesGC2\Model\Debug\Model.exe
+C:\Users\Usuario 1\Documents\Otras_cosas\Universidad\11vo Semestre\GraficasComputacionales_II\GC2_Practicas\gc2_PracticaNo05\LucesGC2\Model\Debug\ShaderLighting.cso
+C:\Users\Usuario 1\Documents\Otras_cosas\Universidad\11vo Semestre\GraficasComputacionales_II\GC2_Practicas\gc2_PracticaNo05\LucesGC2\Model\Debug\Model.exe
+C:\Users\Usuario 1\Documents\Otras_cosas\Universidad\11vo Semestre\GraficasComputacionales_II\GC2_Practicas\gc2_PracticaNo05\LucesGC2\Model\Debug\Model.pdb
