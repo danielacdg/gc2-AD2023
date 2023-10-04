@@ -14,7 +14,7 @@ class CDemoModel : public CDx11Base
 {
 // Constructors
 public:
-    CDemoModel();
+    CDemoModel(float specular);
     virtual ~CDemoModel();
 
 // Overrides
@@ -49,6 +49,11 @@ protected:
     XMFLOAT3 m_SphericalCameraPos;
 
     // ---------- Luz Especular
+    ID3D11Buffer* m_pSpecularIntensity;
+    float specularIntensity;
+    //Posición de la luz especular
+    XMFLOAT3 m_Light;
+    XMFLOAT3 m_LightPos;
 };
 
 

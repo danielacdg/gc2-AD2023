@@ -36,7 +36,7 @@ int APIENTRY wWinMain(HINSTANCE hInstance,
 
     // Initialize demo
     // -----------------------------
-    CDemoModel demo;
+    CDemoModel demo(32);
     if (!demo.Initialize(g_hWnd, g_hInst))
         return -1;
 

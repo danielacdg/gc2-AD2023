@@ -10,7 +10,7 @@
 //////////////////////////////////////////////////////////////////////
 // Constructors
 
-CDemoModel::CDemoModel()
+CDemoModel::CDemoModel(float specular)
 {
     m_pVS = NULL;
     m_pPS = NULL;
@@ -25,6 +25,11 @@ CDemoModel::CDemoModel()
     m_SphericalCamera = XMFLOAT3(0.0f, 0.0f, -5.5f); // rx, ry, distance
     m_SphericalCameraPos = m_SphericalCamera;
     // ---------- Luz Especular
+    m_pSpecularIntensity = NULL;
+    specularIntensity = specular;
+
+    m_Light = XMFLOAT3(0.0f, 0.0f, 5.5f); // rx, ry, distance
+    m_LightPos = m_Light;
 }
 
 CDemoModel::~CDemoModel()
@@ -39,8 +44,7 @@ bool CDemoModel::LoadContent()
 {
     // Load OBJ file
     // ---------- esfera
-    bool res = m_ObjParser.LoadFile("Recursos/scificube.obj");
-    //bool res = m_ObjParser.LoadFile("Cube.txt");
+    bool res = m_ObjParser.LoadFile("Recursos/esfera2.obj");
     if (res == false) {
         ::MessageBox(m_hWnd, L"Unable to load OBJ file", L"ERROR", MB_OK);
         return false;
@@ -178,6 +182,10 @@ bool CDemoModel::LoadContent()
         return false;
     }
     // ---------- Buffer para la posición de la Luz Especular
+    hr = m_pD3DDevice->CreateBuffer(&constBufferDesc, 0, &m_pSpecularIntensity);
+    if (FAILED(hr)) {
+        return false;
+    }
 
     // Initialize matrixes
     m_projMatrix = XMMatrixPerspectiveFovLH(XM_PIDIV4, 640.0f / 480.0f, 0.01f, 1000.0f);
@@ -226,7 +234,7 @@ void CDemoModel::Update()
 {
     m_SphericalCamera.y += 0.0001f;
     // ---------- variable para mover la Luz Especular
-    // 
+    // m_Light.y += 0.0002f;
     
     // Calculate spherical camera
     CalcSphericalCamera();
@@ -273,6 +281,7 @@ void CDemoModel::Render()
     m_pD3DContext->UpdateSubresource(m_pProjCB, 0, 0, &m_projMatrix, 0, 0);
     m_pD3DContext->UpdateSubresource(m_pCameraPosCB, 0, 0, &m_SphericalCameraPos, 0, 0);
     // ---------- Buffer para la Luz Especular
+    m_pD3DContext->UpdateSubresource(m_pSpecularIntensity, 0, 0, &specularIntensity, 0, 0);
 
     // Upload constant buffers to GPU
     m_pD3DContext->VSSetConstantBuffers(0, 1, &m_pWorldCB);
@@ -281,7 +290,7 @@ void CDemoModel::Render()
 
     m_pD3DContext->VSSetConstantBuffers(3, 1, &m_pCameraPosCB);
     // ---------- constantes para la Luz Especular
-
+    m_pD3DContext->VSSetConstantBuffers(4, 1, &m_pSpecularIntensity);
 
     // Draw triangles
     m_pD3DContext->Draw(m_ObjParser.m_nVertexCount, 0);
@@ -315,4 +324,11 @@ void CDemoModel::CalcSphericalCamera()
     m_SphericalCameraPos.z = XMVectorGetZ(pos);
 
     // ---------- Movimiento de la Luz Especular
+    XMVECTOR lightPos = { 0.0f, 0.0f, m_Light.z };
+    XMMATRIX lightRot = XMMatrixRotationRollPitchYaw(m_Light.x, m_Light.y, 0.0f);
+
+    lightPos = XMVector3Transform(lightPos, lightRot);
+    m_LightPos.x = XMVectorGetX(lightPos);
+    m_LightPos.y = XMVectorGetY(lightPos);
+    m_LightPos.z = XMVectorGetZ(lightPos);
 }
