@@ -1,0 +1,5 @@
+﻿FXC : warning X4717: Effects deprecated for D3DCompiler_47
+D:\Documentos\FCFM\AD2023\GC2\Clase 6\Para alumnos\Model\ShaderLighting.fx(69,32-50): warning X3206: implicit truncation of vector type
+  
+  compilation object save succeeded; see D:\Documentos\FCFM\AD2023\GC2\Clase 6\Para alumnos\Model\Debug\ShaderLighting.cso
+  Model.vcxproj -> D:\Documentos\FCFM\AD2023\GC2\Clase 6\Para alumnos\Model\Debug\Model.exe
