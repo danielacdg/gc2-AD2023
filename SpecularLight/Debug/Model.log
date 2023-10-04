@@ -1,0 +1,7 @@
+﻿FXC : warning X4717: Effects deprecated for D3DCompiler_47
+C:\Users\Usuario\Documents\1902402_GraficasII\Clases\gc2-AD2023\Model\ShaderLighting.fx(73,32-50): warning X3206: implicit truncation of vector type
+C:\Users\Usuario\Documents\1902402_GraficasII\Clases\gc2-AD2023\Model\ShaderLighting.fx(76,33-52): warning X3206: implicit truncation of vector type
+C:\Users\Usuario\Documents\1902402_GraficasII\Clases\gc2-AD2023\Model\ShaderLighting.fx(79,5-48): warning X3206: implicit truncation of vector type
+C:\Users\Usuario\Documents\1902402_GraficasII\Clases\gc2-AD2023\Model\ShaderLighting.fx(81,5-10): error X3000: syntax error: unexpected token 'return'
+  
+  compilation failed; no code produced
