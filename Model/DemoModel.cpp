@@ -24,6 +24,7 @@ CDemoModel::CDemoModel()
     m_pCameraPosCB = NULL;
     m_SphericalCamera = XMFLOAT3(0.0f, 0.0f, -5.5f); // rx, ry, distance
     m_SphericalCameraPos = m_SphericalCamera;
+    // ---------- Luz Especular
 }
 
 CDemoModel::~CDemoModel()
@@ -37,6 +38,7 @@ CDemoModel::~CDemoModel()
 bool CDemoModel::LoadContent()
 {
     // Load OBJ file
+    // ---------- esfera
     bool res = m_ObjParser.LoadFile("Recursos/scificube.obj");
     //bool res = m_ObjParser.LoadFile("Cube.txt");
     if (res == false) {
@@ -175,6 +177,7 @@ bool CDemoModel::LoadContent()
     if (FAILED(hr)) {
         return false;
     }
+    // ---------- Buffer para la posición de la Luz Especular
 
     // Initialize matrixes
     m_projMatrix = XMMatrixPerspectiveFovLH(XM_PIDIV4, 640.0f / 480.0f, 0.01f, 1000.0f);
@@ -222,7 +225,9 @@ void CDemoModel::UnloadContent()
 void CDemoModel::Update()
 {
     m_SphericalCamera.y += 0.0001f;
-
+    // ---------- variable para mover la Luz Especular
+    // 
+    
     // Calculate spherical camera
     CalcSphericalCamera();
 }
@@ -266,8 +271,8 @@ void CDemoModel::Render()
     m_pD3DContext->UpdateSubresource(m_pWorldCB, 0, 0, &w, 0, 0);
     m_pD3DContext->UpdateSubresource(m_pViewCB, 0, 0, &m_viewMatrix, 0, 0);
     m_pD3DContext->UpdateSubresource(m_pProjCB, 0, 0, &m_projMatrix, 0, 0);
-
     m_pD3DContext->UpdateSubresource(m_pCameraPosCB, 0, 0, &m_SphericalCameraPos, 0, 0);
+    // ---------- Buffer para la Luz Especular
 
     // Upload constant buffers to GPU
     m_pD3DContext->VSSetConstantBuffers(0, 1, &m_pWorldCB);
@@ -275,6 +280,8 @@ void CDemoModel::Render()
     m_pD3DContext->VSSetConstantBuffers(2, 1, &m_pProjCB);
 
     m_pD3DContext->VSSetConstantBuffers(3, 1, &m_pCameraPosCB);
+    // ---------- constantes para la Luz Especular
+
 
     // Draw triangles
     m_pD3DContext->Draw(m_ObjParser.m_nVertexCount, 0);
@@ -306,4 +313,6 @@ void CDemoModel::CalcSphericalCamera()
     m_SphericalCameraPos.x = XMVectorGetX(pos);
     m_SphericalCameraPos.y = XMVectorGetY(pos);
     m_SphericalCameraPos.z = XMVectorGetZ(pos);
+
+    // ---------- Movimiento de la Luz Especular
 }

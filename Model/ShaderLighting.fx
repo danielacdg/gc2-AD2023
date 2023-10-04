@@ -27,6 +27,7 @@ cbuffer cbCameraPos : register(b3)
 {
     float3 cameraPos;
 }
+// ---------- Constantes para la Luz Especular
 
 
 struct VS_Input
@@ -44,6 +45,7 @@ struct PS_Input
     float3 norm : NORMAL;
     float3 lightVec : TEXCOORD1;
     float3 cameraVec : TEXCOORD2;
+    // ---------- Luz Especular
 };
 
 
@@ -70,6 +72,8 @@ PS_Input VS_Main(VS_Input vertex)
     
     // Calculate camera vector
     
+    // ---------- Luz Especular
+    
 
     return vsOut;
 }
@@ -78,22 +82,23 @@ PS_Input VS_Main(VS_Input vertex)
 float4 PS_Main(PS_Input frag) : SV_TARGET
 {
     // Light colors
-    
-    // Ambient color
     float3 ambientColor = float3(0.2f, 0.2f, 0.2f);
-    
-    // Diffuse color
     float3 diffuseColor = float3(0.8f, 0.8f, 0.8f);
+    // ---------- Color de la Luz Especular
 
     // Get parameters
     float3 normal = normalize(frag.norm);
     float3 lightVec = normalize(frag.lightVec);
+    // ---------- Luz Especular
 
     // Calculate diffuse lighting
-    float diffuseIntensity = saturate(dot(normal, lightVec));
+    float diffuseTerm = saturate(dot(normal, lightVec));
 
+    // ---------- Calcular la intensidad de la Luz Especular
+    
     // Calculate final color
-    float3 finalColor = ambientColor + (diffuseColor * diffuseIntensity);
+    // ---------- Agregar al cálculo la Luz Especular
+    float3 finalColor = ambientColor + (diffuseColor * diffuseTerm);
     
     float4 textura = colorMap.Sample(colorSampler, frag.tex0);
 

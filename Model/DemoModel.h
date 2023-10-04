@@ -48,8 +48,7 @@ protected:
     XMFLOAT3 m_SphericalCamera;
     XMFLOAT3 m_SphericalCameraPos;
 
-    //Color de Luz Difusa
-
+    // ---------- Luz Especular
 };
 
 
