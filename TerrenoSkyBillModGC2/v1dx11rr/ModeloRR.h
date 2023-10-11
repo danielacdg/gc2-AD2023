@@ -74,6 +74,7 @@ private:
 	//////////
 	// matriz para rotacion de la camara
 	//////////
+	D3DXMATRIX rotCam;
 
 public:
 	ModeloRR(ID3D11Device* D3DDevice, ID3D11DeviceContext* D3DContext, char* ModelPath, WCHAR* colorTexturePath, WCHAR* specularTexturePath, float _posX, float _posZ)
@@ -106,9 +107,18 @@ public:
 	//////////
 	// funciones set X y Z
 	//////////
+	void setPosX(float posX) {
+		this->posX = posX;
+	}
+	void setPosZ(float posZ) {
+		this->posZ = posZ;
+	}
 	//////////
 	// funcion rotacion de la camara
 	//////////
+	void setRotCam(D3DXMATRIX rotCam) {
+		this->rotCam = rotCam;
+	}
 
 	bool CompileD3DShader(WCHAR* filePath, char* entry, char* shaderModel, ID3DBlob** buffer)
 	{
@@ -359,11 +369,10 @@ public:
 	{
 
 	}
-
-	void Draw(D3DXMATRIX vista, D3DXMATRIX proyeccion, float ypos, D3DXVECTOR3 posCam, float specForce, float rot, char angle, float scale)
 	//////////
 	// nuevas variables tipoCamara
 	//////////
+	void Draw(D3DXMATRIX vista, D3DXMATRIX proyeccion, float ypos, D3DXVECTOR3 posCam, float specForce, float rot, char angle, float scale, bool tipoCamara, bool movCam)
 	{
 		static float rotation = 0.0f;
 		rotation += 0.01;
@@ -398,12 +407,17 @@ public:
 		//////////
 		// separar de la camara cuando es tercera persona
 		//////////
+		D3DXMATRIX translationRotCam;
+		if (tipoCamara) {
+			D3DXMatrixTranslation(&translationRotCam, 0.0, 0.0, -6.4);
+		}
+		else {
+			D3DXMatrixTranslation(&translationRotCam, 0.0, 0.0, 0.0);
+		}
 
-		//Rotar alrededor de la camara
+		//Rotar alrededor de la camara 
 		D3DXMATRIX rotationMat;
 		D3DXMatrixRotationYawPitchRoll(&rotationMat, 0.0f, 0.0f, 0.0f);
-		D3DXMATRIX translationMat;
-		D3DXMatrixTranslation(&translationMat, posX, ypos, posZ);
 		if(angle == 'X')
 			D3DXMatrixRotationX(&rotationMat, rot);
 		else if (angle == 'Y')
@@ -412,13 +426,23 @@ public:
 			D3DXMatrixRotationZ(&rotationMat, rot);
 		viewMatrix *= rotationMat;
 
-		//////////
-		// Mover a donde esta la camara
-		//////////
+		D3DXMATRIX translationMat;
+		D3DXMatrixTranslation(&translationMat, posX, ypos, posZ);
+
 		D3DXMATRIX scaleMat;        
 		D3DXMatrixScaling(&scaleMat, scale, scale, scale);
 
-		D3DXMATRIX worldMat = rotationMat * scaleMat * translationMat;
+		//////////
+		// Mover a donde esta la camara
+		//////////
+		D3DXMATRIX worldMat;
+		if (movCam) {
+			worldMat = rotationMat * scaleMat * translationMat * translationRotCam;
+		}
+		else {
+			worldMat = rotationMat * scaleMat * translationMat;
+		}
+
 		D3DXMatrixTranspose(&worldMat, &worldMat);
 
 		//actualiza los buffers del shader

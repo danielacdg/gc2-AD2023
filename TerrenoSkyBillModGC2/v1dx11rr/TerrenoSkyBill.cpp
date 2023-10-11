@@ -196,6 +196,13 @@ LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPara
             /////////////
             // se cambia el tipo de vista (primera o tercera persona)
             /////////////
+            if (keyboardData[DIK_E] & 0x80) {
+                dxrr->camaraTipo = false;
+            }
+            if (keyboardData[DIK_R] & 0x80) {
+                dxrr->camaraTipo = true;
+            }
+
             if (keyboardData[DIK_ESCAPE] & 0x80) {
                 KillTimer(hWnd, 100);
                 PostQuitMessage(0);

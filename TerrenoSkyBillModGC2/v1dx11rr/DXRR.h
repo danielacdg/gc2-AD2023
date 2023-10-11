@@ -42,10 +42,11 @@ public:
 	SkyDome* skydome;
 	BillboardRR* billboard;
 	Camara* camara;
-	ModeloRR* model;
+	ModeloRR* model; //cofre
 	///////////
 	// Se agregan dos objetos para modelos nuevos
 	///////////
+	ModeloRR* carro;
 
 	float izqder;
 	float arriaba;
@@ -61,6 +62,8 @@ public:
 	///////////
 	// Se agregan variables para tipo de cámara y rotación de la camara
 	///////////
+	bool camaraTipo;
+	float rotCam; 
 
 	DXRR(HWND hWnd, int Ancho, int Alto)
 	{
@@ -86,11 +89,12 @@ public:
 		///////////
 		// Se inicializan los nuevos modelos
 		///////////
-		
+		carro = new ModeloRR(d3dDevice, d3dContext, "Assets/Auto/Cheep.obj", L"Assets/Auto/Cheep.jpg", L"Assets/Auto/Cheep.jpg", 0, 0);
 
 		// Se inicializan las nuevas variables
 		///////////
-
+		camaraTipo = true;
+		rotCam = 0.0;
 	}
 
 	~DXRR()
@@ -260,6 +264,11 @@ public:
 		///////////
 		// breakpoint
 		///////////
+		if (breakpoint) {
+			int x = 0;
+		}
+
+		rotCam += izqder;
 		
 		float sphere[3] = { 0,0,0 };
 		float prevPos[3] = { camara->posCam.x, camara->posCam.z, camara->posCam.z };
@@ -277,12 +286,12 @@ public:
 		///////////
 		// Se agrega variable de altura en cámara tercera persona
 		///////////
-		
+		camara->posCam3P.y = terreno->Superficie(camara->posCam.x, camara->posCam.z)+6;
 
 		///////////
 		// Se agrega variable de tipo de camara en UpdateCam
 		///////////
-		camara->UpdateCam(vel, arriaba, izqder);
+		camara->UpdateCam(vel, arriaba, izqder, camaraTipo);
 
 		skydome->Update(camara->vista, camara->proyeccion);
 
@@ -300,14 +309,18 @@ public:
 		///////////
 		// Se agregan variables a la función de Draw
 		///////////
-		model->Draw(camara->vista, camara->proyeccion, terreno->Superficie(100, 20), camara->posCam, 10.0f, 0, 'A', 1);
+		model->Draw(camara->vista, camara->proyeccion, terreno->Superficie(100, 20), camara->posCam, 10.0f, 0, 'A', 1, false, false);
 		///////////
 		// Se utilizan funciones de seteo de variables
 		///////////
-		
+		carro->setPosX(camara->hdveo.x);
+		carro->setPosZ(camara->hdveo.z);
 		///////////
 		// Se manda a dibujar el objeto del carro
 		///////////
+		carro->Draw(camara->vista, camara->proyeccion
+			, terreno->Superficie(carro->getPosX(), carro->getPosZ()) + 2.5
+			, camara->posCam, 10.0f, rotCam + XM_PI, 'Y', 1, camaraTipo, true);
 		
 		swapChain->Present(1, 0);
 	}

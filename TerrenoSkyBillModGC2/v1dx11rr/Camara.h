@@ -14,7 +14,7 @@ public:
 	//////////
 	// Nueva variable para camara tercera persona
 	//////////
-
+	D3DXVECTOR3 posCam3P;
 	D3DXVECTOR3 hdveo;
 	D3DXVECTOR3 hdvoy;
 	D3DXVECTOR3 refUp;
@@ -39,7 +39,8 @@ public:
 
 
 		//Posición de la camara 3ra Persona
-		
+		posCam3P = eye;
+		posCam3P.z += 15;
 
 		persona = true;
 
@@ -69,12 +70,11 @@ public:
 	//////////
 	// Nueva variable para camara tercera persona tipoVista
 	//////////
-	D3DXMATRIX UpdateCam(float vel, float arriaba, float izqder)
+	D3DXMATRIX UpdateCam(float vel, float arriaba, float izqder, bool tipoVista = true)
 	{
 		//////////
 		// nueva matriz de vista
 		//////////
-		//D3DXMATRIX tVista;
 		D3DXMATRIX vistaPrev = vista;
 
 		D3DXMatrixTranslation(&vista, 0, 0, 0);
@@ -120,15 +120,19 @@ public:
 		// ajustamos la matriz de vista con lo obtenido
 		//////////
 		posCam += refFront * vel / 10.0;
-		hdveo = posCam + refFront;
-		D3DXMatrixLookAtLH(&vista, &posCam, &hdveo, &refUp);
 		
 		//3ra Persona
-		
+		posCam3P += refFront * vel / 10.0;
 
 		//persona = tipoVista;
-
-
+		if (!tipoVista) { //tercera persona
+			hdveo = posCam3P + refFront;
+			D3DXMatrixLookAtLH(&vista, &posCam3P, &hdveo, &refUp);
+		}
+		else {
+			hdveo = posCam + refFront;
+			D3DXMatrixLookAtLH(&vista, &posCam, &hdveo, &refUp);
+		}
 
 		D3DXMatrixTranspose(&vista, &vista);
 		return vista;
