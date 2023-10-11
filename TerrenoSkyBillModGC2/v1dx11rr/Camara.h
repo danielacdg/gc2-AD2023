@@ -8,9 +8,13 @@
 #include <D3DX11.h>
 #include <D3DX10math.h>
 
-class Camara{
+class Camara {
 public:
 	D3DXVECTOR3 posCam;
+	//////////
+	// Nueva variable para camara tercera persona
+	//////////
+
 	D3DXVECTOR3 hdveo;
 	D3DXVECTOR3 hdvoy;
 	D3DXVECTOR3 refUp;
@@ -20,11 +24,25 @@ public:
 	D3DXMATRIX proyeccion;
 	int ancho;
 	int alto;
+	//////////
+	// Nueva variable para camara tercera persona
+	//////////
+	bool persona;
+
+	// Matriz de rotacion
+	D3DXMATRIX rotacion;
 
 	Camara(D3DXVECTOR3 eye, D3DXVECTOR3 target, D3DXVECTOR3 up, int Ancho, int Alto)
 	{
 		//posicion de la camara
 		posCam = eye;
+
+
+		//Posición de la camara 3ra Persona
+		
+
+		persona = true;
+
 		//a donde ve
 		hdveo = target;
 		refUp = up;
@@ -34,10 +52,10 @@ public:
 		//crea la matriz de vista
 		D3DXMatrixLookAtLH(&vista, &posCam, &hdveo, &refUp);
 		//la de proyeccion
-		D3DXMatrixPerspectiveFovLH( &proyeccion, D3DX_PI/4.0, ancho / alto, 0.01f, 1000.0f );
+		D3DXMatrixPerspectiveFovLH(&proyeccion, D3DX_PI / 4.0, ancho / alto, 0.01f, 1000.0f);
 		//las transpone para acelerar la multiplicacion
-		D3DXMatrixTranspose( &vista, &vista );
-		D3DXMatrixTranspose( &proyeccion, &proyeccion );
+		D3DXMatrixTranspose(&vista, &vista);
+		D3DXMatrixTranspose(&proyeccion, &proyeccion);
 
 		D3DXVec3Normalize(&refUp, &refUp);
 
@@ -46,17 +64,29 @@ public:
 
 		D3DXVec3Cross(&refRight, &refFront, &refUp);
 		D3DXVec3Normalize(&refRight, &refRight);
-		
-	}
 
+	}
+	//////////
+	// Nueva variable para camara tercera persona tipoVista
+	//////////
 	D3DXMATRIX UpdateCam(float vel, float arriaba, float izqder)
 	{
+		//////////
+		// nueva matriz de vista
+		//////////
+		//D3DXMATRIX tVista;
+		D3DXMATRIX vistaPrev = vista;
+
+		D3DXMatrixTranslation(&vista, 0, 0, 0);
+		//D3DXMatrixMultiply(&vista, &vista, &tVista);
+
+
 		D3DXVECTOR4 tempo;
 		D3DXQUATERNION quatern; //quaternion temporal para la camara
 		D3DXMATRIX giraUp, giraRight; //matrices temporales para los giros
 
 		//creamos al quaternion segun el vector up
-		D3DXQuaternionRotationAxis(&quatern, &refUp, izqder); 
+		D3DXQuaternionRotationAxis(&quatern, &refUp, izqder);
 		//lo normalizamos para que no acumule error
 		D3DXQuaternionNormalize(&quatern, &quatern);
 		//creamos la matriz de rotacion basados en el quaternion
@@ -80,13 +110,27 @@ public:
 		D3DXVec3Transform(&tempo, &refFront, &giraRight);
 		refFront = (D3DXVECTOR3)tempo;
 		D3DXVec3Normalize(&refFront, &refFront);
-		
 
-		//ajustamos la matriz de vista con lo obtenido
-		posCam += refFront * vel/10.0;
+		//////////
+		// aplicamos la matriz de rotacion
+		//////////
+		rotacion = giraRight;
+
+		//////////
+		// ajustamos la matriz de vista con lo obtenido
+		//////////
+		posCam += refFront * vel / 10.0;
 		hdveo = posCam + refFront;
 		D3DXMatrixLookAtLH(&vista, &posCam, &hdveo, &refUp);
-		D3DXMatrixTranspose( &vista, &vista );
+		
+		//3ra Persona
+		
+
+		//persona = tipoVista;
+
+
+
+		D3DXMatrixTranspose(&vista, &vista);
 		return vista;
 	}
 	~Camara()

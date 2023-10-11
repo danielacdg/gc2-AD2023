@@ -71,6 +71,9 @@ private:
 	
 	float posX;
 	float posZ;
+	//////////
+	// matriz para rotacion de la camara
+	//////////
 
 public:
 	ModeloRR(ID3D11Device* D3DDevice, ID3D11DeviceContext* D3DContext, char* ModelPath, WCHAR* colorTexturePath, WCHAR* specularTexturePath, float _posX, float _posZ)
@@ -100,6 +103,12 @@ public:
 	float getPosZ() {
 		return this->posZ;
 	}
+	//////////
+	// funciones set X y Z
+	//////////
+	//////////
+	// funcion rotacion de la camara
+	//////////
 
 	bool CompileD3DShader(WCHAR* filePath, char* entry, char* shaderModel, ID3DBlob** buffer)
 	{
@@ -352,6 +361,9 @@ public:
 	}
 
 	void Draw(D3DXMATRIX vista, D3DXMATRIX proyeccion, float ypos, D3DXVECTOR3 posCam, float specForce, float rot, char angle, float scale)
+	//////////
+	// nuevas variables tipoCamara
+	//////////
 	{
 		static float rotation = 0.0f;
 		rotation += 0.01;
@@ -382,7 +394,12 @@ public:
 
 		d3dContext->PSSetSamplers(0, 1, &colorMapSampler);
 
-		//mueve la camara
+
+		//////////
+		// separar de la camara cuando es tercera persona
+		//////////
+
+		//Rotar alrededor de la camara
 		D3DXMATRIX rotationMat;
 		D3DXMatrixRotationYawPitchRoll(&rotationMat, 0.0f, 0.0f, 0.0f);
 		D3DXMATRIX translationMat;
@@ -395,11 +412,15 @@ public:
 			D3DXMatrixRotationZ(&rotationMat, rot);
 		viewMatrix *= rotationMat;
 
-		D3DXMATRIX scaleMat;
-		D3DXMatrixScaling(&scaleMat, scale,scale,scale);
+		//////////
+		// Mover a donde esta la camara
+		//////////
+		D3DXMATRIX scaleMat;        
+		D3DXMatrixScaling(&scaleMat, scale, scale, scale);
 
 		D3DXMATRIX worldMat = rotationMat * scaleMat * translationMat;
 		D3DXMatrixTranspose(&worldMat, &worldMat);
+
 		//actualiza los buffers del shader
 		d3dContext->UpdateSubresource(worldCB, 0, 0, &worldMat, 0, 0);
 		d3dContext->UpdateSubresource(viewCB, 0, 0, &vista, 0, 0);

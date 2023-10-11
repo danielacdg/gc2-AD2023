@@ -193,6 +193,9 @@ LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPara
                 dxrr->breakpoint = true;
             }
 
+            /////////////
+            // se cambia el tipo de vista (primera o tercera persona)
+            /////////////
             if (keyboardData[DIK_ESCAPE] & 0x80) {
                 KillTimer(hWnd, 100);
                 PostQuitMessage(0);
