@@ -6,3 +6,4 @@ C:\Users\Usuario7\Desktop\gc2-AD2023-clases-luces\LucesGC2\Model\Debug\Model.exe
 A:\FCFM\Graficas 2\Practicas\Practica5\LucesGC2\Model\Debug\Model.exe
 C:\Users\Vanessa\Documents\GitHub\VaneGraficas2\LucesGC2\Model\Debug\Model.exe
 A:\GitHub\VaneGraficas2\LucesGC2\Model\Debug\Model.exe
+A:\GitHub\Graficas2\gc2-AD2023\LucesGC2\Model\Debug\Model.exe

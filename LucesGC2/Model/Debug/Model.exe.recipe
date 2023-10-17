@@ -2,12 +2,12 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>A:\GitHub\VaneGraficas2\LucesGC2\Model\Debug\Model.exe</FullPath>
+      <FullPath>A:\GitHub\Graficas2\gc2-AD2023\LucesGC2\Model\Debug\Model.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles>
     <ContentFile>
-      <FullPath>A:\GitHub\VaneGraficas2\LucesGC2\Model\Debug\ShaderLighting.cso</FullPath>
+      <FullPath>A:\GitHub\Graficas2\gc2-AD2023\LucesGC2\Model\Debug\ShaderLighting.cso</FullPath>
     </ContentFile>
   </ContentFiles>
   <SatelliteDlls />
