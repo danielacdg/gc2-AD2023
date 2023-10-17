@@ -1,0 +1,15 @@
+﻿FXC : warning X4717: Effects deprecated for D3DCompiler_47
+G:\AVANCESpasados\GRAFICAS II\Monse\lucesColores\Esta Si\Model2\ShaderLighting.fx(86,32-50): warning X3206: implicit truncation of vector type
+G:\AVANCESpasados\GRAFICAS II\Monse\lucesColores\Esta Si\Model2\ShaderLighting.fx(87,33-52): warning X3206: implicit truncation of vector type
+G:\AVANCESpasados\GRAFICAS II\Monse\lucesColores\Esta Si\Model2\ShaderLighting.fx(94,33-52): warning X3206: implicit truncation of vector type
+  
+  compilation object save succeeded; see G:\AVANCESpasados\GRAFICAS II\Monse\lucesColores\Esta Si\Model2\Debug\ShaderLighting.cso
+  DemoModel.cpp
+G:\AVANCESpasados\GRAFICAS II\Monse\lucesColores\Esta Si\Model2\Dx11Base.h(10,10): fatal  error C1083: No se puede abrir el archivo incluir: 'd3dx11.h': No such file or directory
+  Dx11Base.cpp
+G:\AVANCESpasados\GRAFICAS II\Monse\lucesColores\Esta Si\Model2\Dx11Base.h(10,10): fatal  error C1083: No se puede abrir el archivo incluir: 'd3dx11.h': No such file or directory
+  main.cpp
+G:\AVANCESpasados\GRAFICAS II\Monse\lucesColores\Esta Si\Model2\Dx11Base.h(10,10): fatal  error C1083: No se puede abrir el archivo incluir: 'd3dx11.h': No such file or directory
+  ObjParser.cpp
+G:\AVANCESpasados\GRAFICAS II\Monse\lucesColores\Esta Si\Model2\ObjParser.h(9,10): fatal  error C1083: No se puede abrir el archivo incluir: 'xnamath.h': No such file or directory
+  Generando código...
