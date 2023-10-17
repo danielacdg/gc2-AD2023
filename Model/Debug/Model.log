@@ -1,8 +1,0 @@
-﻿FXC : warning X4717: Effects deprecated for D3DCompiler_47
-D:\FACU\GRAFICAS 2\clase7\Model\ShaderLighting.fx(77,32-50): warning X3206: implicit truncation of vector type
-D:\FACU\GRAFICAS 2\clase7\Model\ShaderLighting.fx(80,33-52): warning X3206: implicit truncation of vector type
-D:\FACU\GRAFICAS 2\clase7\Model\ShaderLighting.fx(82,33-52): warning X3206: implicit truncation of vector type
-D:\FACU\GRAFICAS 2\clase7\Model\ShaderLighting.fx(97,11-48): warning X3206: implicit truncation of vector type
-  
-  compilation object save succeeded; see D:\FACU\GRAFICAS 2\clase7\Model\Debug\ShaderLighting.cso
-  Model.vcxproj -> D:\FACU\GRAFICAS 2\clase7\Model\Debug\Model.exe
