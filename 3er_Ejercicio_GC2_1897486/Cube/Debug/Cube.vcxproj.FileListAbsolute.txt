@@ -1,4 +1,0 @@
-C:\Users\Usuario\Documents\Graficas2-AD2023\gc2-AD2023\Cube\Debug\Cube.exe
-C:\Users\Cgarz\OneDrive\Escritorio\Graficas_Computacionales 2\Practicas\gc2-AD2023\Cube\Debug\Cube.exe
-D:\CLASES AGOSTO-DICIEMBRE-2023\Cube\Debug\Cube.exe
-C:\Users\Leonovo\Desktop\Alan\FCFM\Semestre Agosto - Diciembre 2023\Gráficas Computacionales II\Ejercicios\3er_Ejercicio_GC2_1897486\Cube\Debug\Cube.exe
