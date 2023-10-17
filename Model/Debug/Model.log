@@ -1,0 +1,7 @@
+﻿FXC : warning X4717: Effects deprecated for D3DCompiler_47
+C:\Users\lenovo\Downloads\luzespecular\gc2-AD2023\Model\ShaderLighting.fx(83,32-50): warning X3206: implicit truncation of vector type
+C:\Users\lenovo\Downloads\luzespecular\gc2-AD2023\Model\ShaderLighting.fx(86,33-52): warning X3206: implicit truncation of vector type
+C:\Users\lenovo\Downloads\luzespecular\gc2-AD2023\Model\ShaderLighting.fx(89,5-48): warning X3206: implicit truncation of vector type
+  
+  compilation object save succeeded; see C:\Users\lenovo\Downloads\luzespecular\gc2-AD2023\Model\Debug\ShaderLighting.cso
+  Model.vcxproj -> C:\Users\lenovo\Downloads\luzespecular\gc2-AD2023\Model\Debug\Model.exe
