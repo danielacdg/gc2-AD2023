@@ -47,13 +47,17 @@ protected:
     CObjParser m_ObjParser;
     XMFLOAT3 m_SphericalCamera;
     XMFLOAT3 m_SphericalCameraPos;
+    XMFLOAT3 m_SphericalCamera2;
+    XMFLOAT3 m_SphericalCameraPos2;
 
 
     // ---------- Luz Especular
     ID3D11Buffer* m_pSpecularIntensity;
     ID3D11Buffer* m_pSpecularIntensity2;
+    ID3D11Buffer* m_pColor;
     float specularIntensity;
     float specularIntensity2;
+    float colorl;
     //Posicion de la luz especular
     XMFLOAT3 m_Light;
     XMFLOAT3 m_LightPos;

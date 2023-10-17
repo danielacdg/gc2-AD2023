@@ -33,6 +33,16 @@ cbuffer cbSpecularIntensity : register(b4)
     float3 specularIntensity;
 }
 
+cbuffer cbSpecularIntensity2 : register(b5)
+{
+    float3 specularIntensity2;
+}
+
+cbuffer cbColorLuz : register(b6)
+{
+    float3 colorLuz;
+}
+
 struct VS_Input
 {
     float4 pos  : POSITION;
@@ -47,9 +57,12 @@ struct PS_Input
     float2 tex0 : TEXCOORD0;
     float3 norm : NORMAL;
     float3 lightVec : TEXCOORD1;
+    float3 lightVec2 : TEXCOORD4;
     float3 cameraVec : TEXCOORD2;
     // ---------- Luz Especular
     float specularIntensityR : TEXCOORD3;
+    float specularIntensityR2 : TEXCOORD5;
+    float color : TEXCOORD6;
 };
 
 
@@ -70,16 +83,21 @@ PS_Input VS_Main(VS_Input vertex)
     // Set light position
 
     float3 lightPos = float3(10.0f, 100.0f, -100.0f);
+    float3 lightPos2 = float3(-70.0f, -90.0f, 90.0f);
     
 
     // Calculate light vector
     vsOut.lightVec = normalize(lightPos - worldPos);
+    vsOut.lightVec2 = normalize(lightPos2 - worldPos);
+
+    vsOut.color = colorLuz;
     
     // Calculate camera vector
     vsOut.cameraVec = normalize(cameraPos-worldPos);
 
     // ---------- Luz Especular
     vsOut.specularIntensityR = specularIntensity;
+    vsOut.specularIntensityR2 = specularIntensity2;
 
     return vsOut;
 }
@@ -92,10 +110,13 @@ float4 PS_Main(PS_Input frag) : SV_TARGET
     float3 diffuseColor = float3(0.8f, 0.8f, 0.8f);
     // ---------- Color de la Luz Especular
     float3 specularColor = float3(0.5f, 0.5f, 0.5f);
+    float3 specularColor2 = float3(frag.color, 1-(frag.color), 0.1f);
 
     // Get parameters
     float3 normal = normalize(frag.norm);
     float3 lightVec = normalize(frag.lightVec);
+    float3 lightVec2 = normalize(frag.lightVec2);
+
     // ---------- Luz Especular
     float3 cameraVec = normalize(frag.cameraVec);
 
@@ -105,11 +126,13 @@ float4 PS_Main(PS_Input frag) : SV_TARGET
 
     // ---------- Calcular la intensidad de la Luz Especular
     float3 R = normalize(lightVec+cameraVec);
+    float3 R2 = normalize(lightVec2+cameraVec);
     float intensidadEspecular = pow(saturate(dot(normal,R)),frag.specularIntensityR);
+    float intensidadEspecular2 = pow(saturate(dot(normal,R2)),frag.specularIntensityR2);
     
     // Calculate final color
     // ---------- Agregar al cálculo la Luz Especular
-    float3 finalColor = ambientColor + (diffuseColor * diffuseTerm)+(specularColor*intensidadEspecular);
+    float3 finalColor = ambientColor + (diffuseColor * diffuseTerm)+(specularColor*intensidadEspecular)+(specularColor2*intensidadEspecular2);
     
     float4 textura = colorMap.Sample(colorSampler, frag.tex0);
 

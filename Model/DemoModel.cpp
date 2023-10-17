@@ -24,11 +24,15 @@ CDemoModel::CDemoModel(float specular)
     m_pCameraPosCB = NULL;
     m_SphericalCamera = XMFLOAT3(0.0f, 0.0f, -5.5f); // rx, ry, distance
     m_SphericalCameraPos = m_SphericalCamera;
+    m_SphericalCamera2 = XMFLOAT3(0.0f, 0.0f, 5.5f); // rx, ry, distance
+    m_SphericalCameraPos2 = m_SphericalCamera2;
     // ---------- Luz Especular
     m_pSpecularIntensity=NULL;
     m_pSpecularIntensity2 = NULL;
+    colorl = 0;
     specularIntensity = specular;
     specularIntensity2 = specular;
+    m_pColor =NULL;
     m_Light = XMFLOAT3(0.0f, 0.0f, 5.5f); //z,y,distancia
     m_LightPos = m_Light;
     m_Light2 = XMFLOAT3(0.0f, 0.0f, 5.5f); //z,y,distancia
@@ -195,6 +199,10 @@ bool CDemoModel::LoadContent()
     if (FAILED(hr)) {
         return false;
     }
+    hr = m_pD3DDevice->CreateBuffer(&constBufferDesc, 0, &m_pColor);
+    if (FAILED(hr)) {
+        return false;
+    }
 
 
     // Initialize matrixes
@@ -242,11 +250,16 @@ void CDemoModel::UnloadContent()
 
 void CDemoModel::Update()
 {
-    m_SphericalCamera.y += 0.0001f;
+    m_SphericalCamera.y += 0.01f;
     // ---------- variable para mover la Luz Especular
     m_Light.y += .0002f;
     // 
-    
+    if (colorl >= 1) {
+        colorl -= .001;
+    }
+    else {
+        colorl += .001;
+    }
     // Calculate spherical camera
     CalcSphericalCamera();
 }
@@ -294,15 +307,17 @@ void CDemoModel::Render()
     // ---------- Buffer para la Luz Especular
     m_pD3DContext->UpdateSubresource(m_pSpecularIntensity, 0, 0, &specularIntensity, 0, 0);
     m_pD3DContext->UpdateSubresource(m_pSpecularIntensity2, 0, 0, &specularIntensity2, 0, 0);
+    m_pD3DContext->UpdateSubresource(m_pColor, 0, 0, &colorl, 0, 0);
     // Upload constant buffers to GPU
     m_pD3DContext->VSSetConstantBuffers(0, 1, &m_pWorldCB);
     m_pD3DContext->VSSetConstantBuffers(1, 1, &m_pViewCB);
     m_pD3DContext->VSSetConstantBuffers(2, 1, &m_pProjCB);
-
     m_pD3DContext->VSSetConstantBuffers(3, 1, &m_pCameraPosCB);
+
     // ---------- constantes para la Luz Especular
     m_pD3DContext->VSSetConstantBuffers(4, 1, &m_pSpecularIntensity);
-    m_pD3DContext->VSSetConstantBuffers(4, 1, &m_pSpecularIntensity2);
+    m_pD3DContext->VSSetConstantBuffers(5, 1, &m_pSpecularIntensity2);
+    m_pD3DContext->VSSetConstantBuffers(6, 1, &m_pColor);
 
     // Draw triangles
     m_pD3DContext->Draw(m_ObjParser.m_nVertexCount, 0);
