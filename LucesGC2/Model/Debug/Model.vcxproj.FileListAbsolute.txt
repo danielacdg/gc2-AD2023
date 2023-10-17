@@ -1,0 +1,8 @@
+C:\Users\fgarc\Desktop\FelipeD\Facultad\Vacante\Drive\Model\Debug\Model.exe
+C:\Users\fgarc\Desktop\FelipeD\Facultad\GC2\Clase 5\Model\Debug\Model.exe
+C:\Users\fgarc\Desktop\FelipeD\Facultad\GC2\Clase 6\Model\Debug\Model.exe
+C:\Users\danie\Desktop\PERSONAL\FCFM\Gráficas\Repositorio Alumnos\gc2-AD2023\LucesGC2\Model\Debug\Model.exe
+C:\Users\Usuario205-001\Documents\GitHub\1925291\gc2-AD2023\LucesGC2\Model\Debug\Model.exe
+C:\Users\lenovo\Downloads\luces\1925291\gc2-AD2023\LucesGC2\Model\Debug\ShaderLighting.cso
+C:\Users\lenovo\Downloads\luces\1925291\gc2-AD2023\LucesGC2\Model\Debug\Model.exe
+C:\Users\lenovo\Downloads\luces\1925291\gc2-AD2023\LucesGC2\Model\Debug\Model.pdb
