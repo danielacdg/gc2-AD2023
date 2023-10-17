@@ -1,0 +1,8 @@
+﻿FXC : warning X4717: Effects deprecated for D3DCompiler_47
+C:\Users\user\Documents\GCII\CLASES\gc2-AD2023\Model\ShaderLighting.fx(78,32-50): warning X3206: implicit truncation of vector type
+C:\Users\user\Documents\GCII\CLASES\gc2-AD2023\Model\ShaderLighting.fx(81,33-52): warning X3206: implicit truncation of vector type
+C:\Users\user\Documents\GCII\CLASES\gc2-AD2023\Model\ShaderLighting.fx(84,5-48): warning X3206: implicit truncation of vector type
+C:\Users\user\Documents\GCII\CLASES\gc2-AD2023\Model\ShaderLighting.fx(85,5-50): warning X3206: implicit truncation of vector type
+  
+  compilation object save succeeded; see C:\Users\user\Documents\GCII\CLASES\gc2-AD2023\Model\Debug\ShaderLighting.cso
+  Model.vcxproj -> C:\Users\user\Documents\GCII\CLASES\gc2-AD2023\Model\Debug\Model.exe
