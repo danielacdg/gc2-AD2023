@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <ProjectOutputs>
+    <ProjectOutput>
+      <FullPath>A:\FCFM\Graficas 2\Practicas\Practica7\gc2-AD2023-clases-multitextura\Model_Espec\Debug\Model.exe</FullPath>
+    </ProjectOutput>
+  </ProjectOutputs>
+  <ContentFiles>
+    <ContentFile>
+      <FullPath>A:\FCFM\Graficas 2\Practicas\Practica7\gc2-AD2023-clases-multitextura\Model_Espec\Debug\ShaderLighting.cso</FullPath>
+    </ContentFile>
+  </ContentFiles>
+  <SatelliteDlls />
+  <NonRecipeFileRefs />
+</Project>
