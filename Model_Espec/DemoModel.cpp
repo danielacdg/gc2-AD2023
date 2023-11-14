@@ -35,9 +35,9 @@ CDemoModel::CDemoModel()
     color = XMFLOAT3(0.8f, 0.3f, 0.0f);
     m_DiffuseColor = color;
 
-    // Maps
-    m_pLightMap = NULL;
+    ///SE AGREGAN LAS VARIABLES PARA LOS MAPAS
     m_pAlphaMap = NULL;
+    m_pLightMap = NULL;
     m_pBumpMap = NULL;
     m_pSpecularMap = NULL;
 }
@@ -58,7 +58,7 @@ bool CDemoModel::LoadContent()
         ::MessageBox(m_hWnd, L"Unable to load OBJ file", L"ERROR", MB_OK);
         return false;
     }
-    
+
     // Vertex description
     D3D11_BUFFER_DESC vertexDesc;
     ::ZeroMemory(&vertexDesc, sizeof(vertexDesc));
@@ -109,8 +109,8 @@ bool CDemoModel::LoadContent()
     // Create input layout
     hr = m_pD3DDevice->CreateInputLayout(
         shaderInputLayout, numLayoutElements,
-        pVSBuffer->GetBufferPointer(), 
-        pVSBuffer->GetBufferSize(), 
+        pVSBuffer->GetBufferPointer(),
+        pVSBuffer->GetBufferSize(),
         &m_pInputLayout);
     if (FAILED(hr)) {
         return false;
@@ -131,7 +131,7 @@ bool CDemoModel::LoadContent()
     // Create pixel shader
     hr = m_pD3DDevice->CreatePixelShader(
         pPSBuffer->GetBufferPointer(),
-        pPSBuffer->GetBufferSize(), 
+        pPSBuffer->GetBufferSize(),
         0, &m_pPS);
     if (FAILED(hr)) {
         return false;
@@ -140,8 +140,9 @@ bool CDemoModel::LoadContent()
     // Cleanup PS buffer
     pPSBuffer->Release();
     pPSBuffer = NULL;
-    
 
+
+    //////SE CARGAN LOS RECURSOS DE LOS MAPAS
     // Load texture
     hr = ::D3DX11CreateShaderResourceViewFromFile(
         m_pD3DDevice, L"Recursos/roca.jpg", 0, 0, &m_pColorMap, 0);
@@ -158,17 +159,37 @@ bool CDemoModel::LoadContent()
         return false;
     }
 
-    // Load AlphaMap
-
-
     // Load LightMap
-    
+    hr = ::D3DX11CreateShaderResourceViewFromFile(
+        m_pD3DDevice, L"Recursos/lightmap.jpg", 0, 0, &m_pLightMap, 0);
+    if (FAILED(hr)) {
+        ::MessageBox(m_hWnd, L"Unable to load light map", L"ERROR", MB_OK);
+        return false;
+    }
+
+    // Load AlphaMap
+    hr = ::D3DX11CreateShaderResourceViewFromFile(
+        m_pD3DDevice, L"Recursos/alphamap.jpg", 0, 0, &m_pAlphaMap, 0);
+    if (FAILED(hr)) {
+        ::MessageBox(m_hWnd, L"Unable to load alpha map", L"ERROR", MB_OK);
+        return false;
+    }
 
     // Load BumpMap
-    
+    hr = ::D3DX11CreateShaderResourceViewFromFile(
+        m_pD3DDevice, L"Recursos/roca_bump.jpg", 0, 0, &m_pBumpMap, 0);
+    if (FAILED(hr)) {
+        ::MessageBox(m_hWnd, L"Unable to load bump map", L"ERROR", MB_OK);
+        return false;
+    }
 
     // Load SpecularMap
-    
+    hr = ::D3DX11CreateShaderResourceViewFromFile(
+        m_pD3DDevice, L"Recursos/azulejo_spec.jpg", 0, 0, &m_pSpecularMap, 0);
+    if (FAILED(hr)) {
+        ::MessageBox(m_hWnd, L"Unable to load specular map", L"ERROR", MB_OK);
+        return false;
+    }
 
     // Texture sampler
     D3D11_SAMPLER_DESC textureDesc;
@@ -262,25 +283,15 @@ void CDemoModel::UnloadContent()
         m_pCameraPosCB->Release();
     m_pCameraPosCB = NULL;
 
-    // Maps
-    if (m_pLightMap)
-        m_pLightMap->Release();
-    m_pLightMap = NULL;
     if (m_pAlphaMap)
         m_pAlphaMap->Release();
     m_pAlphaMap = NULL;
-    if (m_pBumpMap)
-        m_pBumpMap->Release();
-    m_pBumpMap = NULL;
-    if (m_pSpecularMap)
-        m_pSpecularMap->Release();
-    m_pSpecularMap = NULL;
 }
 
 void CDemoModel::Update()
 {
     m_SphericalCamera.y += 0.0001f;
-    //objRotation -= 0.0001f;
+    objRotation -= 0.0001f;
 
     // Calculate spherical camera
     //CalcSphericalCamera();
@@ -307,18 +318,17 @@ void CDemoModel::Render()
     m_pD3DContext->IASetVertexBuffers(0, 1, &m_pVertexBuffer, &stride, &offset);
     m_pD3DContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
+
+    //////SE ENVÍA AL SHADER LOS RECURSOS DE LOS MAPAS
     // Set shaders
     m_pD3DContext->VSSetShader(m_pVS, 0, 0);
     m_pD3DContext->PSSetShader(m_pPS, 0, 0);
-
-    // Set Textures
     m_pD3DContext->PSSetShaderResources(0, 1, &m_pColorMap);
     m_pD3DContext->PSSetShaderResources(1, 1, &m_pColorMap2);
-
-    // Set Maps
-
-
-    // Set Sampler
+    m_pD3DContext->PSSetShaderResources(2, 1, &m_pAlphaMap);
+    m_pD3DContext->PSSetShaderResources(3, 1, &m_pLightMap);
+    m_pD3DContext->PSSetShaderResources(4, 1, &m_pBumpMap);
+    m_pD3DContext->PSSetShaderResources(5, 1, &m_pSpecularMap);
     m_pD3DContext->PSSetSamplers(0, 1, &m_pColorMapSampler);
 
     // Position in the world
@@ -347,6 +357,7 @@ void CDemoModel::Render()
     // Draw triangles
     m_pD3DContext->Draw(m_ObjParser.m_nVertexCount, 0);
 
+
     // Present back buffer to display
     m_pSwapChain->Present(0, 0);
 }
@@ -359,12 +370,12 @@ void CDemoModel::Render()
 void CDemoModel::CalcSphericalCamera()
 {
     // Set view matrix (i.e. camera)
-    XMVECTOR pos =    { 0.0f, 0.0f, m_SphericalCamera.z };
+    XMVECTOR pos = { 0.0f, 0.0f, m_SphericalCamera.z };
     XMVECTOR lookAt = { 0.0f, 0.0f, 0.0f };
-    XMVECTOR up =     { 0.0f, 1.0f, 0.0f };
+    XMVECTOR up = { 0.0f, 1.0f, 0.0f };
     XMMATRIX rm = XMMatrixRotationRollPitchYaw(m_SphericalCamera.x, m_SphericalCamera.y, 0.0f);
     pos = XMVector3Transform(pos, rm);
-    up =  XMVector3Transform(up, rm);
+    up = XMVector3Transform(up, rm);
     m_viewMatrix = XMMatrixLookAtLH(pos, lookAt, up);
     m_viewMatrix = XMMatrixTranspose(m_viewMatrix);
 
