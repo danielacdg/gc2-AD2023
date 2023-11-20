@@ -1,0 +1,6 @@
+﻿FXC : warning X4717: Effects deprecated for D3DCompiler_47
+C:\Users\Cgarz\OneDrive\Escritorio\Graficas_Computacionales 2\MisPracticas\gc2-AD2023\Model_Espec\Model_Espec\ShaderLighting.fx(87,11-55): warning X3206: implicit truncation of vector type
+C:\Users\Cgarz\OneDrive\Escritorio\Graficas_Computacionales 2\MisPracticas\gc2-AD2023\Model_Espec\Model_Espec\ShaderLighting.fx(88,11-55): warning X3206: implicit truncation of vector type
+C:\Users\Cgarz\OneDrive\Escritorio\Graficas_Computacionales 2\MisPracticas\gc2-AD2023\Model_Espec\Model_Espec\ShaderLighting.fx(98,5-9): error X3000: unrecognized identifier 'vsOut'
+  
+  compilation failed; no code produced
