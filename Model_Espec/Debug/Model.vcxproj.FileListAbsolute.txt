@@ -1,0 +1,4 @@
+C:\Users\Usuario\Documents\GC2_Ana\gc2-AD2023\Model_Espec\Debug\Model.exe
+C:\Users\lenovo\Downloads\Model_Espec1925291\Model_Espec\Debug\ShaderLighting.cso
+C:\Users\lenovo\Downloads\Model_Espec1925291\Model_Espec\Debug\Model.exe
+C:\Users\lenovo\Downloads\Model_Espec1925291\Model_Espec\Debug\Model.pdb
